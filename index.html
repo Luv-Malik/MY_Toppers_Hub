@@ -72,10 +72,10 @@
   <!-- Motivational Quote Banner -->
   <section class="max-w-4xl mx-auto px-6 mb-12 relative z-10">
     <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-l-cyan-400 relative overflow-hidden">
-      <p id="quote-text" class="text-slate-200 italic font-medium text-base sm:text-lg mb-2">
+      <p class="text-slate-200 italic font-medium text-base sm:text-lg mb-2">
         "Code is like humor. When you have to explain it, it’s bad. Keep practicing!"
       </p>
-      <span id="quote-author" class="text-xs text-cyan-400 font-semibold tracking-wider uppercase">— Cory House</span>
+      <span class="text-xs text-cyan-400 font-semibold tracking-wider uppercase">— Cory House</span>
     </div>
   </section>
 
@@ -156,7 +156,7 @@
     </div>
   </section>
 
-  <!-- Real User Analytics Section -->
+  <!-- Live Analytics Section -->
   <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
     <div class="glass-panel p-8 rounded-3xl border border-white/10">
       <div class="text-center mb-8">
@@ -193,16 +193,16 @@
 
       <div id="modal-content-container" class="space-y-4"></div>
     </div>
-  </script>
+  </div>
 
   <script>
-    // Cursor glow
+    // Cursor glow effect
     const glow = document.getElementById('cursor-glow');
     window.addEventListener('mousemove', (e) => {
       glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     });
 
-    // Subject Mapping with direct File Slugs
+    // Subject Mapping
     const subjectsConfig = {
       1: [
         { name: "Mathematics 1", id: "maths1" },
@@ -232,7 +232,7 @@
       ]
     };
 
-    // Analytics Counter Logic
+    // Analytics Counter
     function updateAnalyticsUI() {
       let visits = localStorage.getItem('th_visits') || 1;
       let views = localStorage.getItem('th_views') || 0;
@@ -245,7 +245,7 @@
     localStorage.setItem('th_visits', currentVisits);
     updateAnalyticsUI();
 
-    // Modal Control
+    // Open Semester Modal
     function openSemModal(semNum) {
       const modal = document.getElementById('sem-modal');
       const container = document.getElementById('modal-content-container');
@@ -258,7 +258,7 @@
           <div class="text-center py-10 px-4">
             <div class="w-16 h-16 rounded-3xl glass-icon flex items-center justify-center text-cyan-400 text-3xl mx-auto mb-6">⚙️</div>
             <h3 class="text-2xl font-bold text-white mb-3">We're Crafting Premium Notes!</h3>
-            <p class="text-slate-300 text-sm max-w-md mx-auto mb-6">Our team of top rankers is currently curating high-quality study material for <strong>Semester 0${semNum}</strong>. Solution keys and uploads dropping super soon!</p>
+            <p class="text-slate-300 text-sm max-w-md mx-auto mb-6">Our team of top rankers is currently curating high-quality study material for <strong>Semester 0${semNum}</strong>.</p>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">✨ Stay Tuned!</div>
           </div>
         `;
@@ -270,15 +270,15 @@
           card.className = 'glass-panel p-5 rounded-2xl border border-white/10';
 
           let unitsButtons = [1, 2, 3, 4].map(uNum => {
-            const filePath = `notes/sem${semNum}_${subj.id}_unit${uNum}.pdf`;
+            const fileName = `sem${semNum}_${subj.id}_unit${uNum}.pdf`;
 
             return `
               <div class="glass-card p-3 rounded-xl flex items-center justify-between text-xs">
                 <span class="text-slate-200 font-semibold">Unit ${uNum}</span>
-                <button onclick="openNoteFile('${filePath}', '${subj.name}', ${uNum})" 
+                <a href="./${fileName}" target="_blank" onclick="trackClick()"
                   class="px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold transition-all">
                   Open Unit ${uNum} 📄
-                </button>
+                </a>
               </div>
             `;
           }).join('');
@@ -297,14 +297,10 @@
       modal.classList.remove('hidden');
     }
 
-    function openNoteFile(path, subjectName, unitNum) {
-      // Increment Notes Opened counter
+    function trackClick() {
       let currentViews = parseInt(localStorage.getItem('th_views') || 0) + 1;
       localStorage.setItem('th_views', currentViews);
       updateAnalyticsUI();
-
-      // Open file from local 'notes' folder directly
-      window.open(path, '_blank');
     }
 
     function closeSemModal() {
