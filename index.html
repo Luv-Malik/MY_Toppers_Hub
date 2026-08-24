@@ -1,3 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes & Practical Files Portal</title>
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #090d12;
+      color: #ffffff;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      padding: 40px 20px;
+    }
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .subtext {
+      color: #8b949e;
+      text-align: center;
+      max-width: 600px;
+      font-size: 15px;
+    }
+
+    /* Search Bar Setup */
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      z-index: 100;
+    }
+    .search-input-box {
+      display: flex;
+      align-items: center;
+      background: #0d1520;
+      border: 1px solid #00f0ff;
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+    .search-input-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      width: 100%;
+      font-size: 16px;
+      margin: 0 10px;
+    }
+
+    /* Category Toggle Buttons (Notes vs Practical Files) */
+    .category-toggle-container {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0e1622;
+      border: 1px solid #1f293d;
+      color: #8b949e;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .toggle-btn:hover {
+      border-color: #00f0ff;
+      color: #ffffff;
+    }
+    .toggle-btn.active {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: #00f0ff;
+      color: #00f0ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    }
+
+    /* Quote Banner */
+    .quote-card {
+      width: 100%;
+      max-width: 800px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .quote-text {
+      font-style: italic;
+      font-size: 17px;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .quote-author {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #00f0ff;
+      font-weight: 600;
+    }
+
+    /* Semester Cards Grid (8 Semesters) */
+    .semester-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+    .sem-card {
+      background: #0e1622;
+      border: 1px solid #1b2738;
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .sem-card:hover {
+      transform: translateY(-4px);
+      border-color: #00f0ff;
+    }
+    .badge {
+      background: #172638;
+      color: #00f0ff;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .sem-card h3 {
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+    .sem-card p {
+      color: #8b949e;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .explore-link {
+      color: #00f0ff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Dynamic Content Container */
+    .tab-content {
+      width: 100%;
+      display: none; /* Controlled via JS */
+    }
+    .tab-content.active-tab {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
 <div class="page-container">
   <p class="subtext">
     Handcrafted notes & practical lab manuals directly uploaded by toppers to help you clear exams effortlessly.
@@ -11,7 +186,7 @@
     </div>
   </div>
 
-  <!-- Category Toggle Pop-up Buttons (Notes vs Practical Files) -->
+  <!-- Category Toggle Pills / Pop-up Buttons -->
   <div class="category-toggle-container">
     <button class="toggle-btn active" onclick="switchTab('notes')">
       <span>📚</span> Notes
@@ -29,9 +204,10 @@
     <span class="quote-author">— WINSTON CHURCHILL</span>
   </div>
 
-  <!-- TAB 1: NOTES (Pura Purana System with All 8 Semesters) -->
+  <!-- TAB 1: NOTES (Purana Wala Setup with All 8 Semesters) -->
   <div id="notes-content" class="tab-content active-tab">
     <div class="semester-grid">
+      <!-- Sem 1 to 8 -->
       <div class="sem-card"><div class="badge">01</div><h3>1st Semester</h3><p>3 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
       <div class="sem-card"><div class="badge">02</div><h3>2nd Semester</h3><p>5 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
       <div class="sem-card"><div class="badge">03</div><h3>3rd Semester</h3><p>5 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
@@ -46,14 +222,41 @@
   <!-- TAB 2: PRACTICAL FILES (All 8 Semesters Practical Files) -->
   <div id="practical-content" class="tab-content">
     <div class="semester-grid">
-      <div class="sem-card"><div class="badge">01</div><h3>1st Sem Labs</h3><p>Physics, Chemistry, C Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <!-- Practical Files Sem 1 to 8 -->
+      <div class="sem-card"><div class="badge">01</div><h3>1st Sem Labs</h3><p>Physics, Chemistry, C Programming</p><a href="#" class="explore-link">View Files →</a></div>
       <div class="sem-card"><div class="badge">02</div><h3>2nd Sem Labs</h3><p>Data Structures, EE Lab</p><a href="#" class="explore-link">View Files →</a></div>
-      <div class="sem-card"><div class="badge">03</div><h3>3rd Sem Labs</h3><p>OOPs, Digital Electronics Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">03</div><h3>3rd Sem Labs</h3><p>OOPs, Digital Electronics</p><a href="#" class="explore-link">View Files →</a></div>
       <div class="sem-card"><div class="badge">04</div><h3>4th Sem Labs</h3><p>Operating Systems, DAA Lab</p><a href="#" class="explore-link">View Files →</a></div>
-      <div class="sem-card"><div class="badge">05</div><h3>5th Sem Labs</h3><p>DBMS, Computer Networks Lab</p><a href="#" class="explore-link">View Files →</a></div>
-      <div class="sem-card"><div class="badge">06</div><h3>6th Sem Labs</h3><p>AI/ML Lab, Web Dev Lab</p><a href="#" class="explore-link">View Files →</a></div>
-      <div class="sem-card"><div class="badge">07</div><h3>7th Sem Labs</h3><p>Cloud & Security Lab</p><a href="#" class="explore-link">View Files →</a></div>
-      <div class="sem-card"><div class="badge">08</div><h3>8th Sem Labs</h3><p>Major Project Manuals</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">05</div><h3>5th Sem Labs</h3><p>DBMS, Computer Networks</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">06</div><h3>6th Sem Labs</h3><p>AI/ML Lab, Web Dev</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">07</div><h3>7th Sem Labs</h3><p>Cloud & Cyber Security Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">08</div><h3>8th Sem Labs</h3><p>Major Project Lab Manuals</p><a href="#" class="explore-link">View Files →</a></div>
     </div>
   </div>
+
 </div>
+
+<script>
+  function switchTab(tabName) {
+    // Buttons state toggle
+    const buttons = document.querySelectorAll('.toggle-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Tabs content toggle
+    const notesTab = document.getElementById('notes-content');
+    const practicalTab = document.getElementById('practical-content');
+
+    if (tabName === 'notes') {
+      buttons[0].classList.add('active');
+      notesTab.classList.add('active-tab');
+      practicalTab.classList.remove('active-tab');
+    } else if (tabName === 'practical') {
+      buttons[1].classList.add('active');
+      practicalTab.classList.add('active-tab');
+      notesTab.classList.remove('active-tab');
+    }
+  }
+</script>
+
+</body>
+</html>
