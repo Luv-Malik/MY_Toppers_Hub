@@ -1,581 +1,72 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toppers Notes Hub - CSE Engineering</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .glass-card:hover {
-      border-color: rgba(6, 182, 212, 0.5);
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(6, 182, 212, 0.2);
-    }
-    .glass-icon {
-      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.02) 100%);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 8px 16px rgba(0,0,0,0.3);
-    }
-    .modal-backdrop {
-      background: rgba(5, 7, 10, 0.88);
-      backdrop-filter: blur(18px);
-    }
-    .quote-box {
-      transition: opacity 0.5s ease-in-out;
-    }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(5, 7, 10, 0.5);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(6, 182, 212, 0.4);
-      border-radius: 9999px;
-    }
-  </style>
-</head>
-<body class="bg-[#05070a] text-slate-100 antialiased font-sans selection:bg-cyan-500 selection:text-black min-h-screen pb-12">
+<div class="page-container">
+  <!-- Top Tagline -->
+  <p class="subtext">
+    Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.
+  </p>
 
-  <div id="cursor-glow" class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 z-0"></div>
+  <!-- Search Section -->
+  <div class="search-wrapper">
+    <div class="search-input-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search notes..." value="ma" />
+      <button class="clear-btn">×</button>
+    </div>
 
-  <!-- Header -->
-  <header class="sticky top-4 z-40 max-w-6xl mx-auto px-4">
-    <div class="glass-panel rounded-full px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 text-lg font-bold tracking-wider text-white">
-        <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-cyan-400 font-extrabold">🎓</div>
-        <span>TOPPERS<span class="text-cyan-400">HUB</span></span>
-      </a>
+    <!-- Dropdown (Ab Floating Layer par aayega) -->
+    <div class="search-dropdown">
+      <div class="dropdown-header">MATCHING NOTES & SUBJECTS</div>
       
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Connect with Author (Mail Icon) -->
-        <a href="mailto:luvmalik8684@gmail.com?subject=Inquiry%20regarding%20Toppers%20Hub%20Notes" 
-           title="Connect via Email"
-           class="glass-icon hover:border-cyan-400 text-cyan-300 hover:text-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold transition-all">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          <span class="hidden sm:inline">Contact Author</span>
-        </a>
-
-        <!-- Connect on LinkedIn -->
-        <a href="https://www.linkedin.com/in/luv-malik-188018383?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           title="Connect on LinkedIn"
-           class="glass-icon hover:border-cyan-400 text-cyan-300 hover:text-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold transition-all">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-          </svg>
-          <span class="hidden sm:inline">LinkedIn</span>
-        </a>
-
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
-          CSE Engineering
-        </span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="pt-12 pb-6 px-6 text-center max-w-4xl mx-auto relative z-10">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-6">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-      Exam Season Survival Portal
-    </div>
-    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
-      Tensed About Coming Exams? <br />
-      <span class="bg-gradient-to-r from-white via-cyan-200 to-blue-500 bg-clip-text text-transparent">Let's Study With Toppers Notes!</span>
-    </h1>
-    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-6">
-      Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.
-    </p>
-
-    <!-- LIVE SEARCH BAR -->
-    <div class="relative max-w-2xl mx-auto mb-8 text-left z-30">
-      <div class="glass-panel rounded-2xl p-2 flex items-center border border-cyan-500/40 focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-500/20 transition-all">
-        <span class="pl-3 text-cyan-400 text-xl">🔍</span>
-        <input 
-          type="text" 
-          id="global-search-input" 
-          placeholder="Type subject name (e.g. Maths, DBMS, Operating Systems, C)..." 
-          oninput="handleSearch()"
-          class="w-full bg-transparent border-none text-white text-sm px-3 py-2 focus:outline-none placeholder-slate-500"
-        />
-        <button onclick="clearSearch()" id="search-clear-btn" class="hidden pr-3 text-slate-400 hover:text-white text-xs font-bold">✕</button>
-      </div>
-
-      <!-- Search Results Dropdown -->
-      <div id="search-results-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 glass-panel rounded-2xl p-4 max-h-80 overflow-y-auto z-50 border border-white/20 shadow-2xl">
-        <div class="text-xs font-bold text-cyan-400 uppercase mb-3 tracking-wider" id="search-results-header">Matching Notes & Subjects</div>
-        <div id="search-results-list" class="space-y-3"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dynamic Motivational Quote Banner -->
-  <section class="max-w-4xl mx-auto px-6 mb-12 relative z-10">
-    <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-l-cyan-400 relative overflow-hidden">
-      <div id="quote-container" class="quote-box">
-        <p id="quote-text" class="text-slate-200 italic font-medium text-base sm:text-lg mb-2">
-          "Code is like humor. When you have to explain it, it’s bad."
-        </p>
-        <span id="quote-author" class="text-xs text-cyan-400 font-semibold tracking-wider uppercase">— Cory House</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Semesters Grid -->
-  <section class="max-w-6xl mx-auto px-6 relative z-10 mb-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <button onclick="openSemModal(1)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">01</div>
-          <h3 class="text-xl font-bold text-white mb-1">1st Semester</h3>
-          <p class="text-xs text-slate-400">3 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(2)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">02</div>
-          <h3 class="text-xl font-bold text-white mb-1">2nd Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(3)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">03</div>
-          <h3 class="text-xl font-bold text-white mb-1">3rd Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(4)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">04</div>
-          <h3 class="text-xl font-bold text-white mb-1">4th Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(5)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">05</div>
-          <h3 class="text-xl font-bold text-white mb-1">5th Semester</h3>
-          <p class="text-xs text-slate-400">Advanced CSE</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(6)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">06</div>
-          <h3 class="text-xl font-bold text-white mb-1">6th Semester</h3>
-          <p class="text-xs text-slate-400">AI & Systems</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(7)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">07</div>
-          <h3 class="text-xl font-bold text-white mb-1">7th Semester</h3>
-          <p class="text-xs text-slate-400">ML & Cloud</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(8)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">08</div>
-          <h3 class="text-xl font-bold text-white mb-1">8th Semester</h3>
-          <p class="text-xs text-slate-400">Projects & Cyber</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- Live Analytics Section -->
-  <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
-    <div class="glass-panel p-8 rounded-3xl border border-white/10">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl font-bold text-white">Live Platform Tracker</h3>
-        <p class="text-slate-400 text-xs sm:text-sm mt-1">Real usage stats recorded live as students open notes</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-          <div id="stat-visits" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">1</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Total Page Visits</p>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-          <div id="stat-views" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">0</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Notes Opened</p>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 col-span-2 md:col-span-1">
-          <div id="stat-active" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">1</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Active Visitors</p>
+      <div class="dropdown-item">
+        <div class="item-title">Mathematics 2</div>
+        <span class="sem-tag">Sem 2</span>
+        <div class="unit-tags">
+          <span class="unit">Unit 1 📄</span>
+          <span class="unit">Unit 2 📄</span>
+          <span class="unit">Unit 3 📄</span>
+          <span class="unit">Unit 4 📄</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FEEDBACK & AUTHOR SECTION -->
-  <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
-      <!-- Submit Feedback Form -->
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-            <span>💬</span> Share Your Feedback
-          </h3>
-          <p class="text-slate-400 text-xs mb-6">Helped you in exams? Let us know or suggest new subjects!</p>
-
-          <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4">
-            <div>
-              <input type="text" id="fb-name" placeholder="Your Name or Branch (e.g. Rahul - CSE)" required 
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"/>
-            </div>
-            <div>
-              <textarea id="fb-comment" rows="3" placeholder="Write your review or notes request..." required
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"></textarea>
-            </div>
-            <button type="submit" 
-              class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-cyan-500/20">
-              Post Feedback ✨
-            </button>
-          </form>
-        </div>
-
-        <!-- Direct Links shortcut -->
-        <div class="mt-6 pt-4 border-t border-white/10 text-center space-y-1">
-          <p class="text-xs text-slate-400">Want to share private notes or connect?</p>
-          <div class="flex items-center justify-center gap-4 text-xs">
-            <a href="mailto:luvmalik8684@gmail.com" class="text-cyan-400 font-bold hover:underline">
-              ✉️ Email Author
-            </a>
-            <span class="text-slate-600">•</span>
-            <a href="https://www.linkedin.com/in/luv-malik-188018383?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline">
-              🔗 LinkedIn Profile
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Student Reviews Board -->
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
-        <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-          <span>🌟</span> Student Reviews
-        </h3>
-        <p class="text-slate-400 text-xs mb-6">What peer students are saying about Toppers Hub</p>
-
-        <div id="feedback-list" class="space-y-3 max-h-72 overflow-y-auto pr-2">
-          <!-- Feedbacks rendered here -->
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- MAIN STUDENT MODAL -->
-  <div id="sem-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative border border-white/20">
-      <button onclick="closeSemModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full glass-icon flex items-center justify-center text-slate-400 hover:text-white">✕</button>
-
-      <div class="mb-6">
-        <span id="modal-sem-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 uppercase">Semester</span>
-        <h2 id="modal-sem-title" class="text-2xl sm:text-3xl font-bold text-white mt-2">Subjects</h2>
-      </div>
-
-      <div id="modal-content-container" class="space-y-4"></div>
+      <!-- Aur items yahan add kar sakte ho -->
     </div>
   </div>
 
-  <script>
-    // Cursor glow effect
-    const glow = document.getElementById('cursor-glow');
-    window.addEventListener('mousemove', (e) => {
-      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
+  <!-- Quote Banner Section -->
+  <div class="quote-card">
+    <p class="quote-text">
+      "Success is not final, failure is not fatal: It is the courage to continue that counts."
+    </p>
+    <span class="quote-author">— WINSTON CHURCHILL</span>
+  </div>
 
-    // Motivational Quotes Array & Rotating Logic
-    const quotes = [
-      { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
-      { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-      { text: "The expert in anything was once a beginner.", author: "Helen Hayes" },
-      { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
-      { text: "It’s not a bug; it’s an undocumented feature.", author: "Anonymous" },
-      { text: "Push yourself, because no one else is going to do it for you.", author: "Engineering Life" },
-      { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
-      { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
-      { text: "Clean code always looks like it was written by someone who cares.", author: "Robert C. Martin" },
-      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" }
-    ];
+  <!-- Semester Cards Section -->
+  <div class="semester-grid">
+    <div class="sem-card">
+      <div class="badge">01</div>
+      <h3>1st Semester</h3>
+      <p>3 Core Subjects</p>
+      <a href="#" class="explore-link">Explore Notes →</a>
+    </div>
 
-    let currentQuoteIndex = 0;
-    const quoteContainer = document.getElementById('quote-container');
-    const quoteText = document.getElementById('quote-text');
-    const quoteAuthor = document.getElementById('quote-author');
+    <div class="sem-card">
+      <div class="badge">02</div>
+      <h3>2nd Semester</h3>
+      <p>5 Core Subjects</p>
+      <a href="#" class="explore-link">Explore Notes →</a>
+    </div>
 
-    setInterval(() => {
-      quoteContainer.style.opacity = '0';
-      setTimeout(() => {
-        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-        quoteText.innerText = `"${quotes[currentQuoteIndex].text}"`;
-        quoteAuthor.innerText = `— ${quotes[currentQuoteIndex].author}`;
-        quoteContainer.style.opacity = '1';
-      }, 500);
-    }, 3000);
+    <div class="sem-card">
+      <div class="badge">03</div>
+      <h3>3rd Semester</h3>
+      <p>5 Core Subjects</p>
+      <a href="#" class="explore-link">Explore Notes →</a>
+    </div>
 
-    // Subject Mapping Data
-    const subjectsConfig = {
-      1: [
-        { name: "Mathematics 1", id: "maths1", units: [1, 2, 3, 4] },
-        { name: "Quantum Mechanics For Engineers", id: "quantum", units: [1, 2, 3, 4] },
-        { name: "Programming For Problem Solving In C", id: "c", units: [1, 2, 3, 4] }
-      ],
-      2: [
-        { name: "Mathematics 2", id: "maths2", units: [1, 2, 3, 4] },
-        { name: "Engineering Chemistry", id: "chem", units: [2, 3, 4] },
-        { name: "Basics Of Analog And Digital Electronics", id: "ade", units: [1, 2, 3, 4] },
-        { name: "Fundamentals Of Electrical Engineering", id: "fee", units: [1, 2, 3] },
-        { name: "Discrete Structures", id: "discrete", units: [1, 2, 3] }
-      ],
-      3: [
-        { name: "Database Management System (DBMS)", id: "dbms", units: [1, 2, 3, 4] },
-        { name: "Data Structures (DS)", id: "ds", units: [1, 2, 3, 4] },
-        { name: "Computer Organization & Architecture (COA)", id: "coa", units: [1, 2, 3, 4] },
-        { name: "Digital System Design (DSD)", id: "dsd", units: [1, 2, 3, 4] },
-        { name: "Object Oriented Programming Using Java", id: "java", units: [1, 2, 3, 4] }
-      ],
-      4: [
-        { name: "Mathematics 3", id: "maths3", units: [1, 2, 3, 4] },
-        { name: "Operating Systems", id: "os", units: [1, 2, 3, 4] },
-        { name: "Design And Analysis Of Algorithms", id: "daa", units: [1, 2, 3, 4] },
-        { name: "Software Engineering", id: "se", units: [1, 2, 3, 4] },
-        { name: "Full Stack Development", id: "fsd", units: [1, 2, 3, 4] }
-      ]
-    };
-
-    // SEARCH FUNCTIONALITY
-    function handleSearch() {
-      const query = document.getElementById('global-search-input').value.toLowerCase().trim();
-      const dropdown = document.getElementById('search-results-dropdown');
-      const resultsList = document.getElementById('search-results-list');
-      const clearBtn = document.getElementById('search-clear-btn');
-
-      if (!query) {
-        dropdown.classList.add('hidden');
-        clearBtn.classList.add('hidden');
-        return;
-      }
-
-      clearBtn.classList.remove('hidden');
-      resultsList.innerHTML = '';
-      let matches = 0;
-
-      // Search across all subjects
-      Object.keys(subjectsConfig).forEach(sem => {
-        subjectsConfig[sem].forEach(subj => {
-          if (subj.name.toLowerCase().includes(query) || subj.id.toLowerCase().includes(query)) {
-            matches++;
-            const card = document.createElement('div');
-            card.className = 'glass-card p-3 rounded-xl border border-white/10';
-
-            const unitsHtml = subj.units.map(u => `
-              <a href="./sem${sem}_${subj.id}_unit${u}.pdf" target="_blank" onclick="trackClick()" 
-                 class="px-2.5 py-1 text-xs rounded-lg bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold transition-all inline-block mt-1">
-                Unit ${u} 📄
-              </a>
-            `).join(' ');
-
-            card.innerHTML = `
-              <div class="flex items-center justify-between mb-1">
-                <span class="text-sm font-bold text-white">${subj.name}</span>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400">Sem ${sem}</span>
-              </div>
-              <div class="flex flex-wrap gap-1.5">
-                ${unitsHtml}
-              </div>
-            `;
-            resultsList.appendChild(card);
-          }
-        });
-      });
-
-      if (matches === 0) {
-        resultsList.innerHTML = `
-          <div class="text-center py-4 text-slate-400 text-xs">
-            No matching subjects found for "${query}". Try searching "Maths", "DBMS", "C", "OS"...
-          </div>
-        `;
-      }
-
-      dropdown.classList.remove('hidden');
-    }
-
-    function clearSearch() {
-      document.getElementById('global-search-input').value = '';
-      document.getElementById('search-results-dropdown').classList.add('hidden');
-      document.getElementById('search-clear-btn').classList.add('hidden');
-    }
-
-    // Close search dropdown on click outside
-    document.addEventListener('click', (e) => {
-      const searchContainer = document.getElementById('global-search-input').parentElement;
-      const dropdown = document.getElementById('search-results-dropdown');
-      if (!searchContainer.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.add('hidden');
-      }
-    });
-
-    // Analytics Counter
-    function updateAnalyticsUI() {
-      let visits = localStorage.getItem('th_visits') || 1;
-      let views = localStorage.getItem('th_views') || 0;
-      document.getElementById('stat-visits').innerText = parseInt(visits).toLocaleString();
-      document.getElementById('stat-views').innerText = parseInt(views).toLocaleString();
-      document.getElementById('stat-active').innerText = Math.floor(Math.random() * 3) + 1;
-    }
-
-    let currentVisits = parseInt(localStorage.getItem('th_visits') || 0) + 1;
-    localStorage.setItem('th_visits', currentVisits);
-    updateAnalyticsUI();
-
-    // Open Semester Modal
-    function openSemModal(semNum) {
-      const modal = document.getElementById('sem-modal');
-      const container = document.getElementById('modal-content-container');
-      container.innerHTML = '';
-      document.getElementById('modal-sem-badge').innerText = `Semester 0${semNum}`;
-
-      if (semNum >= 5) {
-        document.getElementById('modal-sem-title').innerText = "Semester Under Construction";
-        container.innerHTML = `
-          <div class="text-center py-10 px-4">
-            <div class="w-16 h-16 rounded-3xl glass-icon flex items-center justify-center text-cyan-400 text-3xl mx-auto mb-6">⚙️</div>
-            <h3 class="text-2xl font-bold text-white mb-3">We're Crafting Premium Notes!</h3>
-            <p class="text-slate-300 text-sm max-w-md mx-auto mb-6">Our team of top rankers is currently curating high-quality study material for <strong>Semester 0${semNum}</strong>.</p>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">✨ Stay Tuned!</div>
-          </div>
-        `;
-      } else {
-        document.getElementById('modal-sem-title').innerText = `Semester ${semNum} Subjects`;
-
-        subjectsConfig[semNum].forEach((subj) => {
-          const card = document.createElement('div');
-          card.className = 'glass-panel p-5 rounded-2xl border border-white/10';
-
-          let unitsButtons = subj.units.map(uNum => {
-            const fileName = `sem${semNum}_${subj.id}_unit${uNum}.pdf`;
-
-            return `
-              <div class="glass-card p-3 rounded-xl flex items-center justify-between text-xs">
-                <span class="text-slate-200 font-semibold">Unit ${uNum}</span>
-                <a href="./${fileName}" target="_blank" onclick="trackClick()"
-                  class="px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold transition-all">
-                  Open Unit ${uNum} 📄
-                </a>
-              </div>
-            `;
-          }).join('');
-
-          card.innerHTML = `
-            <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-              <span class="text-cyan-400">📖</span> ${subj.name}
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              ${unitsButtons}
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      }
-      modal.classList.remove('hidden');
-    }
-
-    function trackClick() {
-      let currentViews = parseInt(localStorage.getItem('th_views') || 0) + 1;
-      localStorage.setItem('th_views', currentViews);
-      updateAnalyticsUI();
-    }
-
-    function closeSemModal() {
-      document.getElementById('sem-modal').classList.add('hidden');
-    }
-
-    // FEEDBACK SYSTEM
-    const defaultFeedbacks = [
-      { name: "Aman Sharma (CSE Sem 2)", comment: "Analog electronics notes saved me during mid-sems! Perfectly structured.", date: "2 days ago" },
-      { name: "Priya Verma (CSE Sem 4)", comment: "Operating Systems notes are super clean and easy to revise.", date: "5 days ago" }
-    ];
-
-    function loadFeedbacks() {
-      const list = document.getElementById('feedback-list');
-      const saved = JSON.parse(localStorage.getItem('th_feedbacks') || '[]');
-      const allFeedbacks = [...saved, ...defaultFeedbacks];
-
-      list.innerHTML = allFeedbacks.map(fb => `
-        <div class="glass-card p-3 rounded-2xl border border-white/5">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xs font-bold text-cyan-300">${escapeHtml(fb.name)}</span>
-            <span class="text-[10px] text-slate-500">${fb.date || 'Just now'}</span>
-          </div>
-          <p class="text-xs text-slate-300">${escapeHtml(fb.comment)}</p>
-        </div>
-      `).join('');
-    }
-
-    function submitFeedback(e) {
-      e.preventDefault();
-      const nameInput = document.getElementById('fb-name');
-      const commentInput = document.getElementById('fb-comment');
-
-      const newFb = {
-        name: nameInput.value.trim(),
-        comment: commentInput.value.trim(),
-        date: "Just now"
-      };
-
-      const existing = JSON.parse(localStorage.getItem('th_feedbacks') || '[]');
-      existing.unshift(newFb);
-      localStorage.setItem('th_feedbacks', JSON.stringify(existing));
-
-      nameInput.value = '';
-      commentInput.value = '';
-      loadFeedbacks();
-    }
-
-    function escapeHtml(text) {
-      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    // Initial setup
-    loadFeedbacks();
-  </script>
-</body>
-</html>
+    <div class="sem-card">
+      <div class="badge">04</div>
+      <h3>4th Semester</h3>
+      <p>5 Core Subjects</p>
+      <a href="#" class="explore-link">Explore Notes →</a>
+    </div>
+  </div>
+</div>
