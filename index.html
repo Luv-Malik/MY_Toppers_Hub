@@ -1,37 +1,27 @@
 <div class="page-container">
-  <!-- Top Tagline -->
   <p class="subtext">
-    Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.
+    Handcrafted notes & practical lab manuals directly uploaded by toppers to help you clear exams effortlessly.
   </p>
 
   <!-- Search Section -->
   <div class="search-wrapper">
     <div class="search-input-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" placeholder="Search notes..." value="ma" />
-      <button class="clear-btn">×</button>
-    </div>
-
-    <!-- Dropdown (Ab Floating Layer par aayega) -->
-    <div class="search-dropdown">
-      <div class="dropdown-header">MATCHING NOTES & SUBJECTS</div>
-      
-      <div class="dropdown-item">
-        <div class="item-title">Mathematics 2</div>
-        <span class="sem-tag">Sem 2</span>
-        <div class="unit-tags">
-          <span class="unit">Unit 1 📄</span>
-          <span class="unit">Unit 2 📄</span>
-          <span class="unit">Unit 3 📄</span>
-          <span class="unit">Unit 4 📄</span>
-        </div>
-      </div>
-      
-      <!-- Aur items yahan add kar sakte ho -->
+      <span>🔍</span>
+      <input type="text" placeholder="Search notes, practical lab manuals..." />
     </div>
   </div>
 
-  <!-- Quote Banner Section -->
+  <!-- Category Toggle Pop-up Buttons (Notes vs Practical Files) -->
+  <div class="category-toggle-container">
+    <button class="toggle-btn active" onclick="switchTab('notes')">
+      <span>📚</span> Notes
+    </button>
+    <button class="toggle-btn" onclick="switchTab('practical')">
+      <span>🧪</span> Practical Files
+    </button>
+  </div>
+
+  <!-- Quote Banner -->
   <div class="quote-card">
     <p class="quote-text">
       "Success is not final, failure is not fatal: It is the courage to continue that counts."
@@ -39,34 +29,31 @@
     <span class="quote-author">— WINSTON CHURCHILL</span>
   </div>
 
-  <!-- Semester Cards Section -->
-  <div class="semester-grid">
-    <div class="sem-card">
-      <div class="badge">01</div>
-      <h3>1st Semester</h3>
-      <p>3 Core Subjects</p>
-      <a href="#" class="explore-link">Explore Notes →</a>
+  <!-- TAB 1: NOTES (Pura Purana System with All 8 Semesters) -->
+  <div id="notes-content" class="tab-content active-tab">
+    <div class="semester-grid">
+      <div class="sem-card"><div class="badge">01</div><h3>1st Semester</h3><p>3 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">02</div><h3>2nd Semester</h3><p>5 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">03</div><h3>3rd Semester</h3><p>5 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">04</div><h3>4th Semester</h3><p>5 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">05</div><h3>5th Semester</h3><p>4 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">06</div><h3>6th Semester</h3><p>4 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">07</div><h3>7th Semester</h3><p>3 Core Subjects</p><a href="#" class="explore-link">Explore Notes →</a></div>
+      <div class="sem-card"><div class="badge">08</div><h3>8th Semester</h3><p>Project & Viva</p><a href="#" class="explore-link">Explore Notes →</a></div>
     </div>
+  </div>
 
-    <div class="sem-card">
-      <div class="badge">02</div>
-      <h3>2nd Semester</h3>
-      <p>5 Core Subjects</p>
-      <a href="#" class="explore-link">Explore Notes →</a>
-    </div>
-
-    <div class="sem-card">
-      <div class="badge">03</div>
-      <h3>3rd Semester</h3>
-      <p>5 Core Subjects</p>
-      <a href="#" class="explore-link">Explore Notes →</a>
-    </div>
-
-    <div class="sem-card">
-      <div class="badge">04</div>
-      <h3>4th Semester</h3>
-      <p>5 Core Subjects</p>
-      <a href="#" class="explore-link">Explore Notes →</a>
+  <!-- TAB 2: PRACTICAL FILES (All 8 Semesters Practical Files) -->
+  <div id="practical-content" class="tab-content">
+    <div class="semester-grid">
+      <div class="sem-card"><div class="badge">01</div><h3>1st Sem Labs</h3><p>Physics, Chemistry, C Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">02</div><h3>2nd Sem Labs</h3><p>Data Structures, EE Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">03</div><h3>3rd Sem Labs</h3><p>OOPs, Digital Electronics Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">04</div><h3>4th Sem Labs</h3><p>Operating Systems, DAA Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">05</div><h3>5th Sem Labs</h3><p>DBMS, Computer Networks Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">06</div><h3>6th Sem Labs</h3><p>AI/ML Lab, Web Dev Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">07</div><h3>7th Sem Labs</h3><p>Cloud & Security Lab</p><a href="#" class="explore-link">View Files →</a></div>
+      <div class="sem-card"><div class="badge">08</div><h3>8th Sem Labs</h3><p>Major Project Manuals</p><a href="#" class="explore-link">View Files →</a></div>
     </div>
   </div>
 </div>
