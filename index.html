@@ -55,7 +55,6 @@
 
   <div id="cursor-glow" class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 z-0"></div>
 
-  <!-- Header -->
   <header class="sticky top-4 z-40 max-w-6xl mx-auto px-4">
     <div class="glass-panel rounded-full px-6 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3 text-lg font-bold tracking-wider text-white">
@@ -64,7 +63,6 @@
       </a>
       
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Connect with Author (Mail Icon) -->
         <a href="mailto:luvmalik8684@gmail.com?subject=Inquiry%20regarding%20Toppers%20Hub%20Notes" 
            title="Connect via Email"
            class="glass-icon hover:border-cyan-400 text-cyan-300 hover:text-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold transition-all">
@@ -74,7 +72,6 @@
           <span class="hidden sm:inline">Contact Author</span>
         </a>
 
-        <!-- Connect on LinkedIn -->
         <a href="https://www.linkedin.com/in/luv-malik-188018383?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
            target="_blank" 
            rel="noopener noreferrer"
@@ -93,7 +90,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="pt-12 pb-6 px-6 text-center max-w-4xl mx-auto relative z-10">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-6">
       <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
@@ -107,21 +103,19 @@
       Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.
     </p>
 
-    <!-- LIVE SEARCH BAR -->
     <div class="relative max-w-2xl mx-auto mb-8 text-left z-30">
       <div class="glass-panel rounded-2xl p-2 flex items-center border border-cyan-500/40 focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-500/20 transition-all">
         <span class="pl-3 text-cyan-400 text-xl">🔍</span>
         <input 
           type="text" 
           id="global-search-input" 
-          placeholder="Type subject name (e.g. Maths, DBMS, Operating Systems, C)..." 
+          placeholder="Type subject name (e.g. Maths, FLAT, AI, Compiler, Networks)..." 
           oninput="handleSearch()"
           class="w-full bg-transparent border-none text-white text-sm px-3 py-2 focus:outline-none placeholder-slate-500"
         />
         <button onclick="clearSearch()" id="search-clear-btn" class="hidden pr-3 text-slate-400 hover:text-white text-xs font-bold">✕</button>
       </div>
 
-      <!-- Search Results Dropdown -->
       <div id="search-results-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 glass-panel rounded-2xl p-4 max-h-80 overflow-y-auto z-50 border border-white/20 shadow-2xl">
         <div class="text-xs font-bold text-cyan-400 uppercase mb-3 tracking-wider" id="search-results-header">Matching Notes & Subjects</div>
         <div id="search-results-list" class="space-y-3"></div>
@@ -129,7 +123,6 @@
     </div>
   </section>
 
-  <!-- Dynamic Motivational Quote Banner -->
   <section class="max-w-4xl mx-auto px-6 mb-12 relative z-10">
     <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-l-cyan-400 relative overflow-hidden">
       <div id="quote-container" class="quote-box">
@@ -141,7 +134,6 @@
     </div>
   </section>
 
-  <!-- Semesters Grid -->
   <section class="max-w-6xl mx-auto px-6 relative z-10 mb-16">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
       <button onclick="openSemModal(1)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
@@ -184,7 +176,7 @@
         <div>
           <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">05</div>
           <h3 class="text-xl font-bold text-white mb-1">5th Semester</h3>
-          <p class="text-xs text-slate-400">Advanced CSE</p>
+          <p class="text-xs text-slate-400">5 Core Subjects</p>
         </div>
         <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
       </button>
@@ -193,7 +185,7 @@
         <div>
           <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">06</div>
           <h3 class="text-xl font-bold text-white mb-1">6th Semester</h3>
-          <p class="text-xs text-slate-400">AI & Systems</p>
+          <p class="text-xs text-slate-400">3 Core Subjects</p>
         </div>
         <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
       </button>
@@ -218,7 +210,6 @@
     </div>
   </section>
 
-  <!-- Live Analytics Section -->
   <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
     <div class="glass-panel p-8 rounded-3xl border border-white/10">
       <div class="text-center mb-8">
@@ -243,11 +234,9 @@
     </div>
   </section>
 
-  <!-- FEEDBACK & AUTHOR SECTION -->
   <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
-      <!-- Submit Feedback Form -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
@@ -271,7 +260,6 @@
           </form>
         </div>
 
-        <!-- Direct Links shortcut -->
         <div class="mt-6 pt-4 border-t border-white/10 text-center space-y-1">
           <p class="text-xs text-slate-400">Want to share private notes or connect?</p>
           <div class="flex items-center justify-center gap-4 text-xs">
@@ -286,7 +274,6 @@
         </div>
       </div>
 
-      <!-- Live Student Reviews Board -->
       <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
         <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
           <span>🌟</span> Student Reviews
@@ -294,14 +281,12 @@
         <p class="text-slate-400 text-xs mb-6">What peer students are saying about Toppers Hub</p>
 
         <div id="feedback-list" class="space-y-3 max-h-72 overflow-y-auto pr-2">
-          <!-- Feedbacks rendered here -->
-        </div>
+          </div>
       </div>
 
     </div>
   </section>
 
-  <!-- MAIN STUDENT MODAL -->
   <div id="sem-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
     <div class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative border border-white/20">
       <button onclick="closeSemModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full glass-icon flex items-center justify-center text-slate-400 hover:text-white">✕</button>
@@ -351,7 +336,7 @@
       }, 500);
     }, 3000);
 
-    // Subject Mapping Data
+    // Subject Mapping Data (UPDATED WITH SEM 5 & SEM 6)
     const subjectsConfig = {
       1: [
         { name: "Mathematics 1", id: "maths1", units: [1, 2, 3, 4] },
@@ -378,6 +363,18 @@
         { name: "Design And Analysis Of Algorithms", id: "daa", units: [1, 2, 3, 4] },
         { name: "Software Engineering", id: "se", units: [1, 2, 3, 4] },
         { name: "Full Stack Development", id: "fsd", units: [1, 2, 3, 4] }
+      ],
+      5: [
+        { name: "Embedded Systems", id: "embedded", units: [1, 2, 3, 4] },
+        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", units: [1, 2, 3, 4] },
+        { name: "Introduction to Cyber Security", id: "cybersecurity", units: [1, 2, 3, 4] },
+        { name: "Computer Networks", id: "networks", units: [1, 2, 3, 4] },
+        { name: "Python Programming", id: "python", units: [1, 2, 3, 4] }
+      ],
+      6: [
+        { name: "Compiler Design", id: "compiler", units: [1, 2, 3, 4] },
+        { name: "Artificial Intelligence", id: "ai", units: [1, 2, 3, 4] },
+        { name: "Software Testing", id: "testing", units: [1, 2, 3, 4] }
       ]
     };
 
@@ -430,7 +427,7 @@
       if (matches === 0) {
         resultsList.innerHTML = `
           <div class="text-center py-4 text-slate-400 text-xs">
-            No matching subjects found for "${query}". Try searching "Maths", "DBMS", "C", "OS"...
+            No matching subjects found for "${query}". Try searching "FLAT", "Compiler", "Networks", "AI"...
           </div>
         `;
       }
@@ -473,7 +470,7 @@
       container.innerHTML = '';
       document.getElementById('modal-sem-badge').innerText = `Semester 0${semNum}`;
 
-      if (semNum >= 5) {
+      if (!subjectsConfig[semNum]) {
         document.getElementById('modal-sem-title').innerText = "Semester Under Construction";
         container.innerHTML = `
           <div class="text-center py-10 px-4">
@@ -578,12 +575,4 @@
     loadFeedbacks();
   </script>
 </body>
-</html> 
-
-
-
-
-
-
-
-
+</html>
