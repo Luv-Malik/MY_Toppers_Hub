@@ -188,6 +188,7 @@
       border-left: 3px solid #06b6d4;
       background: rgba(6, 182, 212, 0.05);
       border-radius: 0 1rem 1rem 0;
+      transition: opacity 0.4s ease-in-out;
     }
 
     .quote-text {
@@ -430,7 +431,7 @@
       <div class="badge">✨ Exam Season Survival Portal</div>
       
       <!-- Dynamic Motivational Quote Box -->
-      <div class="quote-box">
+      <div class="quote-box" id="quote-box">
         <div class="quote-text" id="quote-display">"Push yourself, because no one else is going to do it for you."</div>
         <div class="quote-author" id="quote-author">- Daily Motivation</div>
       </div>
@@ -551,19 +552,46 @@
   </div>
 
   <script>
-    // Motivational Quotes
+    // Motivational Quotes Array
     const quotes = [
       { text: "It always seems impossible until it's done.", author: "- Nelson Mandela" },
       { text: "Don't watch the clock; do what it does. Keep going.", author: "- Sam Levenson" },
       { text: "Push yourself, because no one else is going to do it for you.", author: "- Toppers Secret" },
       { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "- Winston Churchill" },
-      { text: "The expert in anything was once a beginner.", author: "- Helen Hayes" }
+      { text: "The expert in anything was once a beginner.", author: "- Helen Hayes" },
+      { text: "Work hard in silence, let your success be your noise.", author: "- Frank Ocean" },
+      { text: "Action is the foundational key to all success.", author: "- Pablo Picasso" }
     ];
 
+    let currentQuoteIndex = 0;
+
+    function updateQuote() {
+      const quoteBox = document.getElementById('quote-box');
+      const quoteDisplay = document.getElementById('quote-display');
+      const quoteAuthor = document.getElementById('quote-author');
+
+      if (!quoteBox || !quoteDisplay || !quoteAuthor) return;
+
+      // Smooth Fade Out
+      quoteBox.style.opacity = '0';
+
+      setTimeout(() => {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        quoteDisplay.innerText = `"${quotes[currentQuoteIndex].text}"`;
+        quoteAuthor.innerText = quotes[currentQuoteIndex].author;
+
+        // Smooth Fade In
+        quoteBox.style.opacity = '1';
+      }, 400);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote-display').innerText = `"${randomQuote.text}"`;
-      document.getElementById('quote-author').innerText = randomQuote.author;
+      // Initialize with first quote
+      document.getElementById('quote-display').innerText = `"${quotes[0].text}"`;
+      document.getElementById('quote-author').innerText = quotes[0].author;
+
+      // Auto rotation every 5 seconds (5000ms)
+      setInterval(updateQuote, 5000);
     });
 
     // Subject Configuration with Smart Aliases
@@ -627,7 +655,6 @@
           promptMissingPdf(subjectName, unitNum);
         }
       } catch (e) {
-        // Fallback for direct browser open
         window.open(pdfPath, '_blank');
       }
     }
