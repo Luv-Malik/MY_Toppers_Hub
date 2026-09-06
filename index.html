@@ -1,383 +1,391 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toppers Notes Hub - CSE Engineering</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #05070a;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
     .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      border-radius: 1.5rem;
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      width: 100%;
     }
     .glass-card:hover {
       border-color: rgba(6, 182, 212, 0.5);
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.07);
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(6, 182, 212, 0.2);
     }
-    .glass-icon {
-      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.02) 100%);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 8px 16px rgba(0,0,0,0.3);
+    header {
+      position: sticky;
+      top: 1rem;
+      z-index: 40;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
-    .modal-backdrop {
-      background: rgba(5, 7, 10, 0.88);
-      backdrop-filter: blur(18px);
-    }
-    .quote-box {
-      transition: opacity 0.5s ease-in-out;
-    }
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(5, 7, 10, 0.5);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(6, 182, 212, 0.4);
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
       border-radius: 9999px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .cyan-text { color: #06b6d4; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-link {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #67e8f9;
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-link:hover {
+      border-color: #06b6d4;
+      color: #fff;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #67e8f9;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .search-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+    }
+    .search-trigger:hover {
+      border-color: #06b6d4;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .search-placeholder {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .kbd-tag {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #67e8f9;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .sem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .sem-num {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #06b6d4;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .sem-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .sem-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .explore-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: #06b6d4;
+      font-weight: 600;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(5, 7, 10, 0.92);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1rem 1rem;
+    }
+    .hidden { display: none !important; }
+    .modal-box {
+      width: 100%;
+      max-width: 650px;
+      padding: 1.5rem;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #94a3b8;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .close-btn:hover { color: #fff; background: rgba(255,255,255,0.2); }
+    .modal-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      margin: 1rem 0;
+    }
+    .results-container {
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+    .result-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .unit-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #67e8f9;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .unit-btn:hover {
+      background: #06b6d4;
+      color: #000;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .kbd-tag { display: none; }
     }
   </style>
 </head>
-<body class="bg-[#05070a] text-slate-100 antialiased font-sans selection:bg-cyan-500 selection:text-black min-h-screen pb-12">
+<body>
 
-  <div id="cursor-glow" class="fixed top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 z-0"></div>
-
-  <!-- Header -->
-  <header class="sticky top-4 z-40 max-w-6xl mx-auto px-4">
-    <div class="glass-panel rounded-full px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 text-lg font-bold tracking-wider text-white">
-        <div class="w-9 h-9 rounded-xl glass-icon flex items-center justify-center text-cyan-400 font-extrabold">🎓</div>
-        <span>TOPPERS<span class="text-cyan-400">HUB</span></span>
-      </a>
-      
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="mailto:luvmalik8684@gmail.com?subject=Inquiry%20regarding%20Toppers%20Hub%20Notes" 
-           title="Connect via Email"
-           class="glass-icon hover:border-cyan-400 text-cyan-300 hover:text-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold transition-all">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-          <span class="hidden sm:inline">Contact Author</span>
+  <div class="container">
+    <header>
+      <div class="glass-panel header-inner">
+        <a href="#" class="logo">
+          <div class="logo-icon">🎓</div>
+          <span>TOPPERS<span class="cyan-text">HUB</span></span>
         </a>
-
-        <a href="https://www.linkedin.com/in/luv-malik-188018383?utm_source=share_via&utm_content=profile&utm_medium=member_ios" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           title="Connect on LinkedIn"
-           class="glass-icon hover:border-cyan-400 text-cyan-300 hover:text-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold transition-all">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-          </svg>
-          <span class="hidden sm:inline">LinkedIn</span>
-        </a>
-
-        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
-          CSE Engineering
-        </span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="pt-12 pb-6 px-6 text-center max-w-4xl mx-auto relative z-10">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-6">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-      Exam Season Survival Portal
-    </div>
-    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
-      Tensed About Coming Exams? <br />
-      <span class="bg-gradient-to-r from-white via-cyan-200 to-blue-500 bg-clip-text text-transparent">Let's Study With Toppers Notes!</span>
-    </h1>
-    <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-6">
-      Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.
-    </p>
-
-    <!-- SEARCH TRIGGER BUTTON / BAR -->
-    <div class="relative max-w-2xl mx-auto mb-8 text-left z-20">
-      <div onclick="openSearchModal()" 
-           class="glass-panel rounded-2xl p-3 flex items-center justify-between border border-cyan-500/40 hover:border-cyan-400 transition-all cursor-pointer shadow-lg shadow-cyan-500/5 group">
-        <div class="flex items-center gap-3">
-          <span class="text-cyan-400 text-xl group-hover:scale-110 transition-transform">🔍</span>
-          <span class="text-slate-400 text-sm font-medium">Search subject name (e.g. Maths, FLAT, AI, Compiler)...</span>
+        <div class="nav-links">
+          <a href="mailto:luvmalik8684@gmail.com" class="btn-link">✉️ Contact</a>
+          <a href="https://www.linkedin.com/in/luv-malik-188018383" target="_blank" class="btn-link">🔗 LinkedIn</a>
         </div>
-        <kbd class="hidden sm:inline-block px-2.5 py-1 text-[10px] font-semibold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">Click to Search</kbd>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- SEARCH MODAL POPUP -->
-  <div id="search-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-start justify-center pt-16 sm:pt-24 p-4">
-    <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 relative border border-white/20 shadow-2xl animate-in fade-in zoom-in duration-200">
-      <button onclick="closeSearchModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full glass-icon flex items-center justify-center text-slate-400 hover:text-white">✕</button>
+    <section class="hero">
+      <div class="badge">✨ Exam Season Survival Portal</div>
+      <h1>Tensed About Coming Exams? <br><span class="cyan-text">Let's Study With Toppers Notes!</span></h1>
+      <p>Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.</p>
 
-      <div class="mb-4">
-        <h3 class="text-xl font-bold text-white flex items-center gap-2">
-          <span>🔍</span> Search Notes Hub
-        </h3>
+      <div class="glass-panel search-trigger" onclick="openSearchModal()">
+        <div class="search-placeholder">
+          <span>🔍</span>
+          <span>Search subject name (e.g. Maths, FLAT, AI, Compiler)...</span>
+        </div>
+        <span class="kbd-tag">Click to Search</span>
       </div>
+    </section>
 
-      <div class="glass-panel rounded-2xl p-2 flex items-center border border-cyan-500/50 mb-4 focus-within:border-cyan-400">
-        <span class="pl-3 text-cyan-400 text-xl">✨</span>
-        <input 
-          type="text" 
-          id="modal-search-input" 
-          placeholder="Type subject name..." 
-          oninput="handleModalSearch()"
-          class="w-full bg-transparent border-none text-white text-sm px-3 py-2 focus:outline-none placeholder-slate-500"
-          autofocus
-        />
+    <section class="sem-grid">
+      <div class="glass-card" onclick="openSemModal(1)">
+        <div class="sem-num">01</div>
+        <div class="sem-title">1st Semester</div>
+        <div class="sem-desc">3 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div id="modal-search-results" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-        <div class="text-center py-8 text-slate-400 text-xs">
+      <div class="glass-card" onclick="openSemModal(2)">
+        <div class="sem-num">02</div>
+        <div class="sem-title">2nd Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(3)">
+        <div class="sem-num">03</div>
+        <div class="sem-title">3rd Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(4)">
+        <div class="sem-num">04</div>
+        <div class="sem-title">4th Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(5)">
+        <div class="sem-num">05</div>
+        <div class="sem-title">5th Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(6)">
+        <div class="sem-num">06</div>
+        <div class="sem-title">6th Semester</div>
+        <div class="sem-desc">3 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(7)">
+        <div class="sem-num">07</div>
+        <div class="sem-title">7th Semester</div>
+        <div class="sem-desc">ML & Cloud</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" onclick="openSemModal(8)">
+        <div class="sem-num">08</div>
+        <div class="sem-title">8th Semester</div>
+        <div class="sem-desc">Projects & Cyber</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+    </section>
+  </div>
+
+  <div id="search-modal" class="modal-overlay hidden">
+    <div class="glass-panel modal-box">
+      <button class="close-btn" onclick="closeSearchModal()">✕</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700;">🔍 Search Notes Hub</h3>
+      <input type="text" id="modal-search-input" class="modal-input" placeholder="Type subject name..." oninput="handleModalSearch()">
+      
+      <div id="modal-search-results" class="results-container">
+        <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
           Start typing above to discover subjects & download units directly.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Motivational Quote Banner -->
-  <section class="max-w-4xl mx-auto px-6 mb-12 relative z-10">
-    <div class="glass-panel p-6 rounded-3xl text-center border-l-4 border-l-cyan-400 relative overflow-hidden">
-      <div id="quote-container" class="quote-box">
-        <p id="quote-text" class="text-slate-200 italic font-medium text-base sm:text-lg mb-2">
-          "Code is like humor. When you have to explain it, it’s bad."
-        </p>
-        <span id="quote-author" class="text-xs text-cyan-400 font-semibold tracking-wider uppercase">— Cory House</span>
+  <div id="sem-modal" class="modal-overlay hidden">
+    <div class="glass-panel modal-box">
+      <button class="close-btn" onclick="closeSemModal()">✕</button>
+      <div style="margin-bottom: 1rem;">
+        <span id="modal-sem-badge" class="badge">Semester</span>
+        <h2 id="modal-sem-title" style="font-size: 1.5rem; font-weight: 700;">Subjects</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- Semesters Grid -->
-  <section class="max-w-6xl mx-auto px-6 relative z-10 mb-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <button onclick="openSemModal(1)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">01</div>
-          <h3 class="text-xl font-bold text-white mb-1">1st Semester</h3>
-          <p class="text-xs text-slate-400">3 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(2)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">02</div>
-          <h3 class="text-xl font-bold text-white mb-1">2nd Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(3)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">03</div>
-          <h3 class="text-xl font-bold text-white mb-1">3rd Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(4)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">04</div>
-          <h3 class="text-xl font-bold text-white mb-1">4th Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(5)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">05</div>
-          <h3 class="text-xl font-bold text-white mb-1">5th Semester</h3>
-          <p class="text-xs text-slate-400">5 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(6)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">06</div>
-          <h3 class="text-xl font-bold text-white mb-1">6th Semester</h3>
-          <p class="text-xs text-slate-400">3 Core Subjects</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(7)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">07</div>
-          <h3 class="text-xl font-bold text-white mb-1">7th Semester</h3>
-          <p class="text-xs text-slate-400">ML & Cloud</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-
-      <button onclick="openSemModal(8)" class="glass-card p-6 rounded-3xl text-left flex flex-col justify-between group">
-        <div>
-          <div class="w-12 h-12 rounded-2xl glass-icon flex items-center justify-center mb-4 text-cyan-400 font-bold text-lg">08</div>
-          <h3 class="text-xl font-bold text-white mb-1">8th Semester</h3>
-          <p class="text-xs text-slate-400">Projects & Cyber</p>
-        </div>
-        <span class="mt-6 text-xs text-cyan-400 font-semibold">Explore Notes &rarr;</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- Live Analytics Section -->
-  <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
-    <div class="glass-panel p-8 rounded-3xl border border-white/10">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl font-bold text-white">Live Platform Tracker</h3>
-        <p class="text-slate-400 text-xs sm:text-sm mt-1">Real usage stats recorded live as students open notes</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-          <div id="stat-visits" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">1</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Total Page Visits</p>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
-          <div id="stat-views" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">0</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Notes Opened</p>
-        </div>
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 col-span-2 md:col-span-1">
-          <div id="stat-active" class="text-3xl sm:text-4xl font-extrabold text-cyan-400 mb-1">1</div>
-          <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Active Visitors</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEEDBACK & AUTHOR SECTION -->
-  <section class="max-w-5xl mx-auto px-6 mb-16 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
-      <!-- Feedback Form -->
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-            <span>💬</span> Share Your Feedback
-          </h3>
-          <p class="text-slate-400 text-xs mb-6">Helped you in exams? Let us know or suggest new subjects!</p>
-
-          <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4">
-            <div>
-              <input type="text" id="fb-name" placeholder="Your Name or Branch (e.g. Rahul - CSE)" required 
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"/>
-            </div>
-            <div>
-              <textarea id="fb-comment" rows="3" placeholder="Write your review or notes request..." required
-                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"></textarea>
-            </div>
-            <button type="submit" id="fb-submit-btn" 
-              class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-cyan-500/20">
-              Post Feedback ✨
-            </button>
-          </form>
-        </div>
-
-        <div class="mt-6 pt-4 border-t border-white/10 text-center space-y-1">
-          <p class="text-xs text-slate-400">Want to share private notes or connect?</p>
-          <div class="flex items-center justify-center gap-4 text-xs">
-            <a href="mailto:luvmalik8684@gmail.com" class="text-cyan-400 font-bold hover:underline">
-              ✉️ Email Author
-            </a>
-            <span class="text-slate-600">•</span>
-            <a href="https://www.linkedin.com/in/luv-malik-188018383?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="text-cyan-400 font-bold hover:underline">
-              🔗 LinkedIn Profile
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Real Reviews Board -->
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-xl font-bold text-white flex items-center gap-2">
-            <span>🌟</span> Live Student Reviews
-          </h3>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live
-          </span>
-        </div>
-        <p class="text-slate-400 text-xs mb-6">Recent 10 real feedbacks submitted by students</p>
-
-        <div id="feedback-list" class="space-y-3 max-h-72 overflow-y-auto pr-2">
-          <div class="text-center py-6 text-slate-500 text-xs animate-pulse">Loading live reviews...</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Semester Modal -->
-  <div id="sem-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative border border-white/20">
-      <button onclick="closeSemModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full glass-icon flex items-center justify-center text-slate-400 hover:text-white">✕</button>
-
-      <div class="mb-6">
-        <span id="modal-sem-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 uppercase">Semester</span>
-        <h2 id="modal-sem-title" class="text-2xl sm:text-3xl font-bold text-white mt-2">Subjects</h2>
-      </div>
-
-      <div id="modal-content-container" class="space-y-4"></div>
+      <div id="modal-content-container" class="results-container"></div>
     </div>
   </div>
 
   <script>
-    // LIVE GOOGLE SHEETS BACKEND API URL
-    const API_URL = "https://script.google.com/macros/s/AKfycbwMg5OeudzmVnk9CfR4JnZEYA842E-E8NelPjuPHgzNdf9fnh2kYAaM_Ndmrz0OGnIL/exec";
-
-    // Cursor Glow
-    const glow = document.getElementById('cursor-glow');
-    window.addEventListener('mousemove', (e) => {
-      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
-
-    // Quotes Rotation
-    const quotes = [
-      { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
-      { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-      { text: "The expert in anything was once a beginner.", author: "Helen Hayes" },
-      { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
-      { text: "It’s not a bug; it’s an undocumented feature.", author: "Anonymous" },
-      { text: "Push yourself, because no one else is going to do it for you.", author: "Engineering Life" },
-      { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
-      { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
-      { text: "Clean code always looks like it was written by someone who cares.", author: "Robert C. Martin" },
-      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" }
-    ];
-
-    let currentQuoteIndex = 0;
-    const quoteContainer = document.getElementById('quote-container');
-    const quoteText = document.getElementById('quote-text');
-    const quoteAuthor = document.getElementById('quote-author');
-
-    setInterval(() => {
-      quoteContainer.style.opacity = '0';
-      setTimeout(() => {
-        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-        quoteText.innerText = `"${quotes[currentQuoteIndex].text}"`;
-        quoteAuthor.innerText = `— ${quotes[currentQuoteIndex].author}`;
-        quoteContainer.style.opacity = '1';
-      }, 500);
-    }, 3000);
-
-    // Subject Config
     const subjectsConfig = {
       1: [
         { name: "Mathematics 1", id: "maths1", units: [1, 2, 3, 4] },
@@ -419,19 +427,17 @@
       ]
     };
 
-    // SEARCH POPUP MODAL LOGIC
     function openSearchModal() {
       const modal = document.getElementById('search-modal');
-      const input = document.getElementById('modal-search-input');
       modal.classList.remove('hidden');
-      setTimeout(() => input.focus(), 100);
+      setTimeout(() => document.getElementById('modal-search-input').focus(), 100);
     }
 
     function closeSearchModal() {
       document.getElementById('search-modal').classList.add('hidden');
       document.getElementById('modal-search-input').value = '';
       document.getElementById('modal-search-results').innerHTML = `
-        <div class="text-center py-8 text-slate-400 text-xs">
+        <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
           Start typing above to discover subjects & download units directly.
         </div>
       `;
@@ -443,7 +449,7 @@
 
       if (!query) {
         resultsContainer.innerHTML = `
-          <div class="text-center py-8 text-slate-400 text-xs">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
             Start typing above to discover subjects & download units directly.
           </div>
         `;
@@ -458,23 +464,20 @@
           if (subj.name.toLowerCase().includes(query) || subj.id.toLowerCase().includes(query)) {
             matches++;
             const card = document.createElement('div');
-            card.className = 'glass-card p-4 rounded-2xl border border-white/10 mb-3';
+            card.className = 'result-card';
 
             const unitsHtml = subj.units.map(u => `
-              <a href="./sem${sem}_${subj.id}_unit${u}.pdf" target="_blank" onclick="trackClick(); closeSearchModal();" 
-                 class="px-3 py-1.5 text-xs rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold transition-all inline-block mt-2">
+              <a href="./sem${sem}_${subj.id}_unit${u}.pdf" target="_blank" onclick="closeSearchModal();" class="unit-btn">
                 Unit ${u} 📄
               </a>
             `).join(' ');
 
             card.innerHTML = `
-              <div class="flex items-center justify-between mb-1">
-                <span class="text-sm font-bold text-white">${subj.name}</span>
-                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">Sem ${sem}</span>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="font-size: 0.95rem; color: #fff;">${subj.name}</strong>
+                <span class="badge" style="margin-bottom:0;">Sem ${sem}</span>
               </div>
-              <div class="flex flex-wrap gap-2">
-                ${unitsHtml}
-              </div>
+              <div style="margin-top: 0.5rem;">${unitsHtml}</div>
             `;
             resultsContainer.appendChild(card);
           }
@@ -483,25 +486,12 @@
 
       if (matches === 0) {
         resultsContainer.innerHTML = `
-          <div class="text-center py-8 text-slate-400 text-xs">
+          <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
             No matching subjects found for "${query}".
           </div>
         `;
       }
     }
-
-    // Analytics Counter
-    function updateAnalyticsUI() {
-      let visits = localStorage.getItem('th_visits') || 1;
-      let views = localStorage.getItem('th_views') || 0;
-      document.getElementById('stat-visits').innerText = parseInt(visits).toLocaleString();
-      document.getElementById('stat-views').innerText = parseInt(views).toLocaleString();
-      document.getElementById('stat-active').innerText = Math.floor(Math.random() * 3) + 1;
-    }
-
-    let currentVisits = parseInt(localStorage.getItem('th_visits') || 0) + 1;
-    localStorage.setItem('th_visits', currentVisits);
-    updateAnalyticsUI();
 
     function openSemModal(semNum) {
       const modal = document.getElementById('sem-modal');
@@ -511,42 +501,26 @@
 
       if (!subjectsConfig[semNum]) {
         document.getElementById('modal-sem-title').innerText = "Semester Under Construction";
-        container.innerHTML = `
-          <div class="text-center py-10 px-4">
-            <div class="w-16 h-16 rounded-3xl glass-icon flex items-center justify-center text-cyan-400 text-3xl mx-auto mb-6">⚙️</div>
-            <h3 class="text-2xl font-bold text-white mb-3">We're Crafting Premium Notes!</h3>
-            <p class="text-slate-300 text-sm max-w-md mx-auto mb-6">Our team of top rankers is currently curating high-quality study material for <strong>Semester 0${semNum}</strong>.</p>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">✨ Stay Tuned!</div>
-          </div>
-        `;
+        container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem 0;">Notes coming soon for Semester 0${semNum}!</p>`;
       } else {
         document.getElementById('modal-sem-title').innerText = `Semester ${semNum} Subjects`;
 
         subjectsConfig[semNum].forEach((subj) => {
           const card = document.createElement('div');
-          card.className = 'glass-panel p-5 rounded-2xl border border-white/10';
+          card.className = 'result-card';
 
           let unitsButtons = subj.units.map(uNum => {
             const fileName = `sem${semNum}_${subj.id}_unit${uNum}.pdf`;
-
             return `
-              <div class="glass-card p-3 rounded-xl flex items-center justify-between text-xs">
-                <span class="text-slate-200 font-semibold">Unit ${uNum}</span>
-                <a href="./${fileName}" target="_blank" onclick="trackClick()"
-                  class="px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold transition-all">
-                  Open Unit ${uNum} 📄
-                </a>
-              </div>
+              <a href="./${fileName}" target="_blank" class="unit-btn">
+                Open Unit ${uNum} 📄
+              </a>
             `;
           }).join('');
 
           card.innerHTML = `
-            <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-              <span class="text-cyan-400">📖</span> ${subj.name}
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              ${unitsButtons}
-            </div>
+            <h4 style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">📖 ${subj.name}</h4>
+            <div>${unitsButtons}</div>
           `;
           container.appendChild(card);
         });
@@ -554,86 +528,9 @@
       modal.classList.remove('hidden');
     }
 
-    function trackClick() {
-      let currentViews = parseInt(localStorage.getItem('th_views') || 0) + 1;
-      localStorage.setItem('th_views', currentViews);
-      updateAnalyticsUI();
-    }
-
     function closeSemModal() {
       document.getElementById('sem-modal').classList.add('hidden');
     }
-
-    // REAL-TIME FEEDBACK SYSTEM VIA GOOGLE SHEETS
-    async function loadFeedbacks() {
-      const list = document.getElementById('feedback-list');
-
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-
-        if (!data || data.length === 0) {
-          list.innerHTML = `<div class="text-center py-6 text-slate-500 text-xs">No reviews submitted yet. Be the first to review!</div>`;
-          return;
-        }
-
-        list.innerHTML = data.map(fb => `
-          <div class="glass-card p-3 rounded-2xl border border-white/5">
-            <div class="flex items-center justify-between mb-1">
-              <span class="text-xs font-bold text-cyan-300">${escapeHtml(fb.name)}</span>
-              <span class="text-[10px] text-slate-500">${fb.date}</span>
-            </div>
-            <p class="text-xs text-slate-300">${escapeHtml(fb.comment)}</p>
-          </div>
-        `).join('');
-      } catch (err) {
-        list.innerHTML = `<div class="text-center py-4 text-slate-500 text-xs">Loading live reviews...</div>`;
-      }
-    }
-
-    async function submitFeedback(e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById('fb-submit-btn');
-      const nameInput = document.getElementById('fb-name');
-      const commentInput = document.getElementById('fb-comment');
-
-      submitBtn.innerText = "Posting Review...";
-      submitBtn.disabled = true;
-
-      try {
-        await fetch(API_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: nameInput.value.trim(),
-            comment: commentInput.value.trim()
-          })
-        });
-
-        nameInput.value = '';
-        commentInput.value = '';
-        
-        setTimeout(() => {
-          submitBtn.innerText = "Post Feedback ✨";
-          submitBtn.disabled = false;
-          loadFeedbacks();
-        }, 1200);
-
-      } catch (err) {
-        alert("Error posting feedback. Please try again.");
-        submitBtn.innerText = "Post Feedback ✨";
-        submitBtn.disabled = false;
-      }
-    }
-
-    function escapeHtml(text) {
-      return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    // Initial Load & Auto-Refresh Every 15 Seconds
-    loadFeedbacks();
-    setInterval(loadFeedbacks, 15000);
   </script>
 </body>
 </html>
