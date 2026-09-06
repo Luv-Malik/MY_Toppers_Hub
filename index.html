@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toppers Notes Hub - CSE Engineering</title>
+
+  <!-- SEO & Social Preview Tags -->
+  <meta name="description" content="Handcrafted toppers notes, unit-wise PDFs, and exam prep resources for CSE Engineering students." />
+  <meta name="keywords" content="Toppers Notes, CSE Notes, Engineering Notes, Computer Science, BTech Notes, Maths, DBMS, OS, AI" />
+  <meta name="author" content="Luv Malik" />
+
+  <!-- Open Graph / Social Media Sharing -->
+  <meta property="og:title" content="Toppers Notes Hub - CSE Engineering" />
+  <meta property="og:description" content="Clear mid-terms and end-sem exams effortlessly with unit-wise toppers notes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://luv-malik.github.io/MY_Toppers_Hub/" />
+  <meta property="og:image" content="https://luv-malik.github.io/MY_Toppers_Hub/preview.png" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -20,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    /* Background Sparkles / Starfield Effect */
+    /* Background Sparkles Effect */
     .bg-sparkles {
       position: fixed;
       top: 0;
@@ -73,12 +86,14 @@
       text-align: left;
       color: inherit;
       width: 100%;
+      outline: none;
     }
 
-    .glass-card:hover {
-      border-color: rgba(6, 182, 212, 0.5);
+    .glass-card:hover, .glass-card:focus-visible {
+      border-color: rgba(6, 182, 212, 0.7);
       background: rgba(255, 255, 255, 0.07);
       transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
     }
 
     /* Header */
@@ -138,11 +153,13 @@
       font-weight: 600;
       transition: all 0.2s;
       cursor: pointer;
+      outline: none;
     }
 
-    .btn-link:hover {
+    .btn-link:hover, .btn-link:focus-visible {
       border-color: #06b6d4;
       color: #fff;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
     }
 
     /* Hero & Quotes */
@@ -210,11 +227,13 @@
       transition: all 0.2s;
       max-width: 650px;
       margin: 0 auto 2.5rem;
+      outline: none;
     }
 
-    .search-trigger:hover {
+    .search-trigger:hover, .search-trigger:focus-visible {
       border-color: #06b6d4;
       background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
     }
 
     .search-placeholder {
@@ -371,9 +390,10 @@
       border-radius: 0.5rem;
       text-decoration: none;
       transition: all 0.2s;
+      cursor: pointer;
     }
 
-    .unit-btn:hover {
+    .unit-btn:hover, .unit-btn:focus-visible {
       background: #06b6d4;
       color: #000;
     }
@@ -388,6 +408,7 @@
 </head>
 <body>
 
+  <!-- Sparkles Layer -->
   <div class="bg-sparkles"></div>
 
   <div class="container">
@@ -398,7 +419,7 @@
           <span>TOPPERS<span class="cyan-text">HUB</span></span>
         </a>
         <div class="nav-links">
-          <button onclick="openFeedbackModal()" class="btn-link">💬 Feedback</button>
+          <button onclick="openFeedbackModal()" class="btn-link" aria-label="Open Feedback Form">💬 Feedback</button>
           <a href="mailto:luvmalik8684@gmail.com?subject=Inquiry%20regarding%20Toppers%20Hub%20Notes" class="btn-link">✉️ Contact</a>
           <a href="https://www.linkedin.com/in/luv-malik-188018383" target="_blank" class="btn-link">🔗 LinkedIn</a>
         </div>
@@ -408,6 +429,7 @@
     <section class="hero">
       <div class="badge">✨ Exam Season Survival Portal</div>
       
+      <!-- Dynamic Motivational Quote Box -->
       <div class="quote-box">
         <div class="quote-text" id="quote-display">"Push yourself, because no one else is going to do it for you."</div>
         <div class="quote-author" id="quote-author">- Daily Motivation</div>
@@ -416,66 +438,66 @@
       <h1>Tensed About Coming Exams? <br><span class="cyan-text">Let's Study With Toppers Notes!</span></h1>
       <p>Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.</p>
 
-      <div class="glass-panel search-trigger" onclick="openSearchModal()">
+      <div class="glass-panel search-trigger" tabindex="0" role="button" aria-label="Search Subjects" onclick="openSearchModal()" onkeydown="handleKeyPress(event, openSearchModal)">
         <div class="search-placeholder">
           <span>🔍</span>
-          <span>Search subject name (e.g. Maths, FLAT, AI, Compiler)...</span>
+          <span>Search subject or code (e.g. Maths, M1, FLAT, OS, AI, Compiler)...</span>
         </div>
-        <span class="kbd-tag">Click to Search</span>
+        <span class="kbd-tag">Click / Press Enter</span>
       </div>
     </section>
 
     <section class="sem-grid">
-      <div class="glass-card" onclick="openSemModal(1)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 1 Notes" onclick="openSemModal(1)" onkeydown="handleKeyPress(event, () => openSemModal(1))">
         <div class="sem-num">01</div>
         <div class="sem-title">1st Semester</div>
         <div class="sem-desc">3 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(2)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 2 Notes" onclick="openSemModal(2)" onkeydown="handleKeyPress(event, () => openSemModal(2))">
         <div class="sem-num">02</div>
         <div class="sem-title">2nd Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(3)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 3 Notes" onclick="openSemModal(3)" onkeydown="handleKeyPress(event, () => openSemModal(3))">
         <div class="sem-num">03</div>
         <div class="sem-title">3rd Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(4)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 4 Notes" onclick="openSemModal(4)" onkeydown="handleKeyPress(event, () => openSemModal(4))">
         <div class="sem-num">04</div>
         <div class="sem-title">4th Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(5)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 5 Notes" onclick="openSemModal(5)" onkeydown="handleKeyPress(event, () => openSemModal(5))">
         <div class="sem-num">05</div>
         <div class="sem-title">5th Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(6)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 6 Notes" onclick="openSemModal(6)" onkeydown="handleKeyPress(event, () => openSemModal(6))">
         <div class="sem-num">06</div>
         <div class="sem-title">6th Semester</div>
         <div class="sem-desc">3 Core Subjects</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(7)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 7 Notes" onclick="openSemModal(7)" onkeydown="handleKeyPress(event, () => openSemModal(7))">
         <div class="sem-num">07</div>
         <div class="sem-title">7th Semester</div>
         <div class="sem-desc">ML & Cloud</div>
         <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" onclick="openSemModal(8)">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 8 Notes" onclick="openSemModal(8)" onkeydown="handleKeyPress(event, () => openSemModal(8))">
         <div class="sem-num">08</div>
         <div class="sem-title">8th Semester</div>
         <div class="sem-desc">Projects & Cyber</div>
@@ -484,11 +506,12 @@
     </section>
   </div>
 
+  <!-- SEARCH MODAL POPUP -->
   <div id="search-modal" class="modal-overlay hidden">
     <div class="glass-panel modal-box">
-      <button class="close-btn" onclick="closeSearchModal()">✕</button>
+      <button class="close-btn" onclick="closeSearchModal()" aria-label="Close modal">✕</button>
       <h3 style="font-size: 1.2rem; font-weight: 700;">🔍 Search Notes Hub</h3>
-      <input type="text" id="modal-search-input" class="modal-input" placeholder="Type subject name..." oninput="handleModalSearch()">
+      <input type="text" id="modal-search-input" class="modal-input" placeholder="Type subject or alias (e.g., M1, OS, FLAT, AI)..." oninput="handleModalSearch()">
       
       <div id="modal-search-results" class="results-container">
         <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
@@ -498,9 +521,10 @@
     </div>
   </div>
 
+  <!-- SEMESTER MODAL POPUP -->
   <div id="sem-modal" class="modal-overlay hidden">
     <div class="glass-panel modal-box">
-      <button class="close-btn" onclick="closeSemModal()">✕</button>
+      <button class="close-btn" onclick="closeSemModal()" aria-label="Close modal">✕</button>
       <div style="margin-bottom: 1rem;">
         <span id="modal-sem-badge" class="badge">Semester</span>
         <h2 id="modal-sem-title" style="font-size: 1.5rem; font-weight: 700;">Subjects</h2>
@@ -509,9 +533,10 @@
     </div>
   </div>
 
+  <!-- FEEDBACK MODAL POPUP -->
   <div id="feedback-modal" class="modal-overlay hidden">
     <div class="glass-panel modal-box">
-      <button class="close-btn" onclick="closeFeedbackModal()">✕</button>
+      <button class="close-btn" onclick="closeFeedbackModal()" aria-label="Close modal">✕</button>
       <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">💬 Send Feedback & Request Notes</h3>
       <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Have any suggestion or missing notes? Let us know!</p>
       
@@ -526,7 +551,7 @@
   </div>
 
   <script>
-    // Motivational Quotes List
+    // Motivational Quotes
     const quotes = [
       { text: "It always seems impossible until it's done.", author: "- Nelson Mandela" },
       { text: "Don't watch the clock; do what it does. Keep going.", author: "- Sam Levenson" },
@@ -535,53 +560,84 @@
       { text: "The expert in anything was once a beginner.", author: "- Helen Hayes" }
     ];
 
-    // Set Random Quote on Load
     window.addEventListener('DOMContentLoaded', () => {
       const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
       document.getElementById('quote-display').innerText = `"${randomQuote.text}"`;
       document.getElementById('quote-author').innerText = randomQuote.author;
     });
 
+    // Subject Configuration with Smart Aliases
     const subjectsConfig = {
       1: [
-        { name: "Mathematics 1", id: "maths1", units: [1, 2, 3, 4] },
-        { name: "Quantum Mechanics For Engineers", id: "quantum", units: [1, 2, 3, 4] },
-        { name: "Programming For Problem Solving In C", id: "c", units: [1, 2, 3, 4] }
+        { name: "Mathematics 1", id: "maths1", aliases: ["m1", "maths 1", "math 1"], units: [1, 2, 3, 4] },
+        { name: "Quantum Mechanics For Engineers", id: "quantum", aliases: ["physics", "qm"], units: [1, 2, 3, 4] },
+        { name: "Programming For Problem Solving In C", id: "c", aliases: ["c prog", "c programming", "pps"], units: [1, 2, 3, 4] }
       ],
       2: [
-        { name: "Mathematics 2", id: "maths2", units: [1, 2, 3, 4] },
-        { name: "Engineering Chemistry", id: "chem", units: [2, 3, 4] },
-        { name: "Basics Of Analog And Digital Electronics", id: "ade", units: [1, 2, 3, 4] },
-        { name: "Fundamentals Of Electrical Engineering", id: "fee", units: [1, 2, 3] },
-        { name: "Discrete Structures", id: "discrete", units: [1, 2, 3] }
+        { name: "Mathematics 2", id: "maths2", aliases: ["m2", "maths 2", "math 2"], units: [1, 2, 3, 4] },
+        { name: "Engineering Chemistry", id: "chem", aliases: ["chemistry"], units: [2, 3, 4] },
+        { name: "Basics Of Analog And Digital Electronics", id: "ade", aliases: ["analog", "digital", "ade"], units: [1, 2, 3, 4] },
+        { name: "Fundamentals Of Electrical Engineering", id: "fee", aliases: ["electrical", "fee"], units: [1, 2, 3] },
+        { name: "Discrete Structures", id: "discrete", aliases: ["dms", "discrete maths"], units: [1, 2, 3] }
       ],
       3: [
-        { name: "Database Management System (DBMS)", id: "dbms", units: [1, 2, 3, 4] },
-        { name: "Data Structures (DS)", id: "ds", units: [1, 2, 3, 4] },
-        { name: "Computer Organization & Architecture (COA)", id: "coa", units: [1, 2, 3, 4] },
-        { name: "Digital System Design (DSD)", id: "dsd", units: [1, 2, 3, 4] },
-        { name: "Object Oriented Programming Using Java", id: "java", units: [1, 2, 3, 4] }
+        { name: "Database Management System (DBMS)", id: "dbms", aliases: ["dbms", "sql", "database"], units: [1, 2, 3, 4] },
+        { name: "Data Structures (DS)", id: "ds", aliases: ["dsa", "data structure"], units: [1, 2, 3, 4] },
+        { name: "Computer Organization & Architecture (COA)", id: "coa", aliases: ["coa", "architecture"], units: [1, 2, 3, 4] },
+        { name: "Digital System Design (DSD)", id: "dsd", aliases: ["dsd", "logic design"], units: [1, 2, 3, 4] },
+        { name: "Object Oriented Programming Using Java", id: "java", aliases: ["oops", "java", "oop"], units: [1, 2, 3, 4] }
       ],
       4: [
-        { name: "Mathematics 3", id: "maths3", units: [1, 2, 3, 4] },
-        { name: "Operating Systems", id: "os", units: [1, 2, 3, 4] },
-        { name: "Design And Analysis Of Algorithms", id: "daa", units: [1, 2, 3, 4] },
-        { name: "Software Engineering", id: "se", units: [1, 2, 3, 4] },
-        { name: "Full Stack Development", id: "fsd", units: [1, 2, 3, 4] }
+        { name: "Mathematics 3", id: "maths3", aliases: ["m3", "maths 3", "math 3"], units: [1, 2, 3, 4] },
+        { name: "Operating Systems", id: "os", aliases: ["os", "operating system"], units: [1, 2, 3, 4] },
+        { name: "Design And Analysis Of Algorithms", id: "daa", aliases: ["daa", "algo", "algorithms"], units: [1, 2, 3, 4] },
+        { name: "Software Engineering", id: "se", aliases: ["se", "software eng"], units: [1, 2, 3, 4] },
+        { name: "Full Stack Development", id: "fsd", aliases: ["fsd", "web dev", "web"], units: [1, 2, 3, 4] }
       ],
       5: [
-        { name: "Embedded Systems", id: "embedded", units: [1, 2, 3, 4] },
-        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", units: [1, 2, 3, 4] },
-        { name: "Introduction to Cyber Security", id: "cybersecurity", units: [1, 2, 3, 4] },
-        { name: "Computer Networks", id: "networks", units: [1, 2, 3, 4] },
-        { name: "Python Programming", id: "python", units: [1, 2, 3, 4] }
+        { name: "Embedded Systems", id: "embedded", aliases: ["embedded", "es"], units: [1, 2, 3, 4] },
+        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", aliases: ["flat", "toc", "automata"], units: [1, 2, 3, 4] },
+        { name: "Introduction to Cyber Security", id: "cybersecurity", aliases: ["cyber", "security"], units: [1, 2, 3, 4] },
+        { name: "Computer Networks", id: "networks", aliases: ["cn", "networks", "networking"], units: [1, 2, 3, 4] },
+        { name: "Python Programming", id: "python", aliases: ["python", "py"], units: [1, 2, 3, 4] }
       ],
       6: [
-        { name: "Compiler Design", id: "compiler", units: [1, 2, 3, 4] },
-        { name: "Artificial Intelligence", id: "ai", units: [1, 2, 3, 4] },
-        { name: "Software Testing", id: "testing", units: [1, 2, 3, 4] }
+        { name: "Compiler Design", id: "compiler", aliases: ["cd", "compiler"], units: [1, 2, 3, 4] },
+        { name: "Artificial Intelligence", id: "ai", aliases: ["ai", "intel"], units: [1, 2, 3, 4] },
+        { name: "Software Testing", id: "testing", aliases: ["st", "testing", "stqa"], units: [1, 2, 3, 4] }
       ]
     };
+
+    // Keyboard Accessibility Handler
+    function handleKeyPress(e, callback) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        callback();
+      }
+    }
+
+    // PDF Link Verification with Fallback
+    async function handlePdfOpen(event, pdfPath, subjectName, unitNum) {
+      event.preventDefault();
+      try {
+        const response = await fetch(pdfPath, { method: 'HEAD' });
+        if (response.ok) {
+          window.open(pdfPath, '_blank');
+        } else {
+          promptMissingPdf(subjectName, unitNum);
+        }
+      } catch (e) {
+        // Fallback for direct browser open
+        window.open(pdfPath, '_blank');
+      }
+    }
+
+    function promptMissingPdf(subj, unit) {
+      if (confirm(`Unit ${unit} for "${subj}" is currently being prepared by our toppers.\n\nWould you like to request this note right now?`)) {
+        openFeedbackModal();
+        document.getElementById('fb-message').value = `Please upload notes for ${subj} - Unit ${unit}.`;
+      }
+    }
 
     function openSearchModal() {
       const modal = document.getElementById('search-modal');
@@ -617,16 +673,23 @@
 
       Object.keys(subjectsConfig).forEach(sem => {
         subjectsConfig[sem].forEach(subj => {
-          if (subj.name.toLowerCase().includes(query) || subj.id.toLowerCase().includes(query)) {
+          const matchName = subj.name.toLowerCase().includes(query);
+          const matchId = subj.id.toLowerCase().includes(query);
+          const matchAlias = subj.aliases && subj.aliases.some(a => a.toLowerCase().includes(query));
+
+          if (matchName || matchId || matchAlias) {
             matches++;
             const card = document.createElement('div');
             card.className = 'result-card';
 
-            const unitsHtml = subj.units.map(u => `
-              <a href="./sem${sem}_${subj.id}_unit${u}.pdf" target="_blank" onclick="closeSearchModal();" class="unit-btn">
-                Unit ${u} 📄
-              </a>
-            `).join(' ');
+            const unitsHtml = subj.units.map(u => {
+              const file = `./sem${sem}_${subj.id}_unit${u}.pdf`;
+              return `
+                <a href="${file}" onclick="handlePdfOpen(event, '${file}', '${subj.name.replace(/'/g, "\\'")}', ${u})" class="unit-btn">
+                  Unit ${u} 📄
+                </a>
+              `;
+            }).join(' ');
 
             card.innerHTML = `
               <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -666,9 +729,9 @@
           card.className = 'result-card';
 
           let unitsButtons = subj.units.map(uNum => {
-            const fileName = `sem${semNum}_${subj.id}_unit${uNum}.pdf`;
+            const fileName = `./sem${semNum}_${subj.id}_unit${uNum}.pdf`;
             return `
-              <a href="./${fileName}" target="_blank" class="unit-btn">
+              <a href="${fileName}" onclick="handlePdfOpen(event, '${fileName}', '${subj.name.replace(/'/g, "\\'")}', ${uNum})" class="unit-btn">
                 Open Unit ${uNum} 📄
               </a>
             `;
