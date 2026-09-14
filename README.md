@@ -1,4 +1,3 @@
- cat << 'EOF' > README.md
 # 🎓 Toppers Notes Hub
 ### *Computer Science & Engineering Exam Portal*
 
@@ -6,7 +5,7 @@
 
 ---
 
-[🌐 Live Demo](https://luv-malik.github.io/MY_Toppers_Hub/) • [📌 Report Issue](https://github.com/luv-malik/MY_Toppers_Hub/issues) • [📜 License (MIT)](LICENSE)
+[🌐 Live Demo](https://luv-malik.github.io/MY_Toppers_Hub/) • [📌 Report Issue](https://github.com/luv-malik/MY_Toppers_Hub/issues/new) • [📜 License (MIT)](./LICENSE)
 
 ---
 
@@ -36,4 +35,17 @@ MY_Toppers_Hub/
 ├── index.html              # Main HTML markup, styling & script logic
 ├── sem1_maths1_unit1.pdf   # Sample Subject PDF resources
 ├── sem2_chem_unit2.pdf     # Sample Subject PDF resources
-└── README.md               # Project Documentation
+├── LICENSE                 # MIT License
+└── README.md               # Project 
+
+
+
+
+👤 Author
+Luv Malik
+ GitHub: @luv-malik
+ LinkedIn: Luv Malik
+ Email: luvmalik8684@gmail.com
+Built with ❤️ for CSE Engineering Students.
+
+
