@@ -714,21 +714,21 @@
   <!-- FLOATING AI CHATBOT WIDGET -->
   <div id="ai-chat-widget">
     <button id="ai-chat-btn" onclick="toggleAiChat()" aria-label="Open AI Assistant">
-      🤖 <span>AI Study Hub</span>
+      🤖 <span>Gemini AI Tutor</span>
     </button>
 
     <div id="ai-chat-box" class="glass-panel hidden">
       <div class="chat-header">
         <div class="chat-title">
           <strong>🤖 Toppers AI Study Partner</strong>
-          <small>Ask doubts & get YouTube lectures</small>
+          <small>Powered by Gemini AI</small>
         </div>
         <button class="close-btn" style="top: 0.6rem; right: 0.6rem;" onclick="toggleAiChat()">✕</button>
       </div>
 
       <div id="chat-messages" class="chat-messages">
         <div class="bot-msg">
-          👋 <strong>Hello Engineer!</strong> I am your CSE Study Assistant. Ask any engineering doubt or concept (e.g. <em>Explain Deadlock in OS</em> or <em>What is B-Tree?</em>).
+          👋 <strong>Hello Engineer!</strong> I am connected directly to Gemini AI. Ask any CSE doubt (e.g. <em>Explain Virtual Memory in OS</em> or <em>Dijkstra Algorithm working</em>).
         </div>
       </div>
 
@@ -978,7 +978,7 @@
       closeFeedbackModal();
     }
 
-    /* --- AI CHATBOT FUNCTIONALITY --- */
+    /* --- REAL GEMINI AI CHATBOT FUNCTIONALITY --- */
     function toggleAiChat() {
       const box = document.getElementById('ai-chat-box');
       box.classList.toggle('hidden');
@@ -1000,61 +1000,55 @@
       input.value = '';
 
       // Loading Indicator
-      const loadingDiv = appendMessage('Analyzing concept & generating response...', 'bot-msg');
+      const loadingDiv = appendMessage('Gemini AI thinking...', 'bot-msg');
 
       try {
-        // Option to add Gemini API key from Google AI Studio (Free)
-        const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; 
-        
-        let aiResponseText = "";
+        // CONFIGURED GEMINI API KEY
+        const GEMINI_API_KEY = "AQ.Ab8RN6K9oJzSRR4DMkdYfBpguAe_YQCiptlADUq0fU-H2sEWawAQ.Ab8RN6K9oJzSRR4DMkdYfBpguAe_YQCiptlADUq0fU-H2sEWaw"; 
 
-        if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-          // Default Text Explanation Fallback
-          aiResponseText = `<strong>${userText}:</strong><br/><br/>
-• <strong>Definition:</strong> ${userText} is an important core concept in Computer Science & Engineering.<br/>
-• <strong>Key Purpose:</strong> It helps in managing resources efficiently, optimizing performance, and building scalable systems.<br/>
-• <strong>Exam Prep Tip:</strong> Make sure to draw neat block diagrams and include step-by-step algorithms during university exams.`;
-        } else {
-          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{
-                parts: [{ 
-                  text: `You are Toppers Hub CSE AI Assistant. The user asked: "${userText}". 
-IMPORTANT INSTRUCTIONS:
-1. Detect the user's input language. ALWAYS answer in the EXACT SAME language as the user's prompt (e.g., if asked in English, reply in English; if in Hinglish/Hindi, reply in that language).
-2. First, provide a clear, detailed, and structured text explanation using bullet points and bold headers so the student learns the concept thoroughly.
-3. Keep it helpful, precise, and easy to read.` 
-                }]
+        // Call Gemini 1.5 Flash API
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{ 
+                text: `You are Toppers Hub CSE AI Tutor. User prompt: "${userText}".
+CRITICAL INSTRUCTIONS:
+1. Detect user prompt language. Respond in the EXACT SAME language (English / Hinglish / Hindi).
+2. Give a detailed, accurate engineering explanation with clear bullet points and bold headings.
+3. Keep it well-structured for university exam prep.` 
               }]
-            })
-          });
+            }]
+          })
+        });
 
-          const data = await response.json();
-          aiResponseText = data.candidates[0].content.parts[0].text;
+        const data = await response.json();
+
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+          const aiText = data.candidates[0].content.parts[0].text;
+          loadingDiv.innerHTML = formatMarkdown(aiText);
+
+          // Add Top Viewed YouTube Search Link at the bottom
+          const ytQuery = encodeURIComponent(`${userText} CSE engineering lecture`);
+          const ytSearchUrl = `https://www.youtube.com/results?search_query=${ytQuery}&sp=CAM%253D`; // Sorted by view count
+
+          const ytCardHtml = `
+            <div class="yt-card">
+              📺 <strong>Top Video Lecture:</strong><br/>
+              <a href="${ytSearchUrl}" target="_blank" rel="noopener noreferrer">
+                Watch Top Viewed Videos for "${userText}" on YouTube ↗
+              </a>
+            </div>
+          `;
+          loadingDiv.innerHTML += ytCardHtml;
+        } else {
+          loadingDiv.innerText = "Gemini server response invalid. Please check your API key.";
         }
-
-        // Render AI Text Response First
-        loadingDiv.innerHTML = formatMarkdown(aiResponseText);
-
-        // 2. Direct YouTube Search Button at the Bottom
-        const ytQuery = encodeURIComponent(`${userText} Computer Science Engineering CSE lecture`);
-        const ytSearchUrl = `https://www.youtube.com/results?search_query=${ytQuery}`;
-
-        const ytCardHtml = `
-          <div class="yt-card">
-            📺 <strong>Want Video Explanation?</strong><br/>
-            <a href="${ytSearchUrl}" target="_blank" rel="noopener noreferrer">
-              Watch "${userText}" Video Lectures on YouTube ↗
-            </a>
-          </div>
-        `;
-        loadingDiv.innerHTML += ytCardHtml;
 
       } catch (err) {
         console.error(err);
-        loadingDiv.innerText = "Sorry, failed to generate explanation right now. Please try again.";
+        loadingDiv.innerText = "Error connecting to Gemini AI. Please check your internet connection or API key.";
       }
 
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
