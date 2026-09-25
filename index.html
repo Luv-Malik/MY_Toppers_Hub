@@ -6,7 +6,7 @@
   <title>Toppers Notes Hub - CSE Engineering</title>
 
   <!-- SEO & Social Preview Tags -->
-  <meta name="description" content="Handcrafted toppers notes, unit-wise guidance, and exam prep resources for CSE Engineering students." />
+  <meta name="description" content="Handcrafted toppers notes, unit-wise PDFs, and exam prep resources for CSE Engineering students." />
   <meta name="keywords" content="Toppers Notes, CSE Notes, Engineering Notes, Computer Science, BTech Notes, Maths, DBMS, OS, AI" />
   <meta name="author" content="Luv Malik" />
 
@@ -28,7 +28,7 @@
       color: #f1f5f9;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
-      padding-bottom: 5rem;
+      padding-bottom: 3rem;
       position: relative;
       overflow-x: hidden;
     }
@@ -294,7 +294,7 @@
       font-weight: 600;
     }
 
-    /* Modals Base */
+    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -378,197 +378,25 @@
       margin-bottom: 0.75rem;
     }
 
-    .view-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+    .unit-btn {
+      display: inline-block;
       margin-top: 0.5rem;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.8rem;
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: #06b6d4;
-      background: rgba(6, 182, 212, 0.1);
+      color: #67e8f9;
+      background: rgba(6, 182, 212, 0.15);
       border: 1px solid rgba(6, 182, 212, 0.4);
       border-radius: 0.5rem;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
       cursor: pointer;
     }
 
-    .view-btn:hover {
+    .unit-btn:hover, .unit-btn:focus-visible {
       background: #06b6d4;
       color: #000;
-      box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
-    }
-
-    .disabled-view-btn {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.75rem;
-      color: #94a3b8;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0.5rem;
-    }
-
-    /* --- FLOATING AI CHATBOT STYLES --- */
-    #ai-chat-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    #ai-chat-btn {
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.75rem 1.25rem;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #ai-chat-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.6);
-    }
-
-    #ai-chat-box {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 380px;
-      max-width: 90vw;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      z-index: 1000;
-    }
-
-    .chat-header {
-      padding: 0.85rem 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chat-title strong {
-      display: block;
-      font-size: 0.95rem;
-      color: #fff;
-    }
-
-    .chat-title small {
-      display: block;
-      font-size: 0.7rem;
-      color: #06b6d4;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 1rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      font-size: 0.85rem;
-    }
-
-    .user-msg, .bot-msg {
-      padding: 0.65rem 0.9rem;
-      border-radius: 0.85rem;
-      max-width: 88%;
-      line-height: 1.45;
-      word-wrap: break-word;
-    }
-
-    .user-msg {
-      background: #06b6d4;
-      color: #000;
-      align-self: flex-end;
-      font-weight: 600;
-      border-bottom-right-radius: 0.2rem;
-    }
-
-    .bot-msg {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #f1f5f9;
-      align-self: flex-start;
-      border-bottom-left-radius: 0.2rem;
-    }
-
-    .yt-card {
-      margin-top: 0.6rem;
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 0.6rem;
-      border-radius: 0.6rem;
-    }
-
-    .yt-card a {
-      color: #fca5a5;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.8rem;
-      display: inline-block;
-      margin-top: 0.2rem;
-    }
-
-    .yt-card a:hover {
-      text-decoration: underline;
-      color: #fff;
-    }
-
-    #chat-form {
-      display: flex;
-      padding: 0.6rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      gap: 0.5rem;
-    }
-
-    #chat-input {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      border-radius: 0.5rem;
-      color: #fff;
-      padding: 0.55rem 0.8rem;
-      outline: none;
-      font-size: 0.85rem;
-    }
-
-    #chat-input:focus {
-      border-color: #06b6d4;
-    }
-
-    #chat-send-btn {
-      background: #06b6d4;
-      color: #000;
-      border: none;
-      padding: 0.55rem 0.9rem;
-      border-radius: 0.5rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #chat-send-btn:hover {
-      background: #22d3ee;
     }
 
     @media (max-width: 600px) {
@@ -576,7 +404,6 @@
       .kbd-tag { display: none; }
       .nav-links { gap: 0.25rem; }
       .btn-link { padding: 0.35rem 0.6rem; font-size: 0.75rem; }
-      #ai-chat-box { right: 5vw; width: 90vw; bottom: 75px; }
     }
   </style>
 </head>
@@ -610,7 +437,7 @@
       </div>
 
       <h1>Tensed About Coming Exams? <br><span class="cyan-text">Let's Study With Toppers Notes!</span></h1>
-      <p>Handcrafted study modules and instant AI resolution to help you clear mid-terms and end-sem exams effortlessly.</p>
+      <p>Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.</p>
 
       <div class="glass-panel search-trigger" tabindex="0" role="button" aria-label="Search Subjects" onclick="openSearchModal()" onkeydown="handleKeyPress(event, openSearchModal)">
         <div class="search-placeholder">
@@ -622,60 +449,60 @@
     </section>
 
     <section class="sem-grid">
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 1 Subjects" onclick="openSemModal(1)" onkeydown="handleKeyPress(event, () => openSemModal(1))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 1 Notes" onclick="openSemModal(1)" onkeydown="handleKeyPress(event, () => openSemModal(1))">
         <div class="sem-num">01</div>
         <div class="sem-title">1st Semester</div>
         <div class="sem-desc">3 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 2 Subjects" onclick="openSemModal(2)" onkeydown="handleKeyPress(event, () => openSemModal(2))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 2 Notes" onclick="openSemModal(2)" onkeydown="handleKeyPress(event, () => openSemModal(2))">
         <div class="sem-num">02</div>
         <div class="sem-title">2nd Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 3 Subjects" onclick="openSemModal(3)" onkeydown="handleKeyPress(event, () => openSemModal(3))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 3 Notes" onclick="openSemModal(3)" onkeydown="handleKeyPress(event, () => openSemModal(3))">
         <div class="sem-num">03</div>
         <div class="sem-title">3rd Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 4 Subjects" onclick="openSemModal(4)" onkeydown="handleKeyPress(event, () => openSemModal(4))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 4 Notes" onclick="openSemModal(4)" onkeydown="handleKeyPress(event, () => openSemModal(4))">
         <div class="sem-num">04</div>
         <div class="sem-title">4th Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 5 Subjects" onclick="openSemModal(5)" onkeydown="handleKeyPress(event, () => openSemModal(5))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 5 Notes" onclick="openSemModal(5)" onkeydown="handleKeyPress(event, () => openSemModal(5))">
         <div class="sem-num">05</div>
         <div class="sem-title">5th Semester</div>
         <div class="sem-desc">5 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 6 Subjects" onclick="openSemModal(6)" onkeydown="handleKeyPress(event, () => openSemModal(6))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 6 Notes" onclick="openSemModal(6)" onkeydown="handleKeyPress(event, () => openSemModal(6))">
         <div class="sem-num">06</div>
         <div class="sem-title">6th Semester</div>
         <div class="sem-desc">3 Core Subjects</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 7 Subjects" onclick="openSemModal(7)" onkeydown="handleKeyPress(event, () => openSemModal(7))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 7 Notes" onclick="openSemModal(7)" onkeydown="handleKeyPress(event, () => openSemModal(7))">
         <div class="sem-num">07</div>
         <div class="sem-title">7th Semester</div>
         <div class="sem-desc">ML & Cloud</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
 
-      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 8 Subjects" onclick="openSemModal(8)" onkeydown="handleKeyPress(event, () => openSemModal(8))">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 8 Notes" onclick="openSemModal(8)" onkeydown="handleKeyPress(event, () => openSemModal(8))">
         <div class="sem-num">08</div>
         <div class="sem-title">8th Semester</div>
         <div class="sem-desc">Projects & Cyber</div>
-        <div class="explore-link">Explore Subjects &rarr;</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
       </div>
     </section>
   </div>
@@ -689,7 +516,7 @@
       
       <div id="modal-search-results" class="results-container">
         <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
-          Start typing above to search for subjects.
+          Start typing above to discover subjects & download units directly.
         </div>
       </div>
     </div>
@@ -711,43 +538,15 @@
   <div id="feedback-modal" class="modal-overlay hidden">
     <div class="glass-panel modal-box">
       <button class="close-btn" onclick="closeFeedbackModal()" aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">💬 Send Feedback & Suggestions</h3>
-      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Have any suggestion or request? Let us know!</p>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">💬 Send Feedback & Request Notes</h3>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Have any suggestion or missing notes? Let us know!</p>
       
       <form onsubmit="handleFeedbackSubmit(event)">
         <input type="text" id="fb-name" class="modal-input" placeholder="Your Name" required />
-        <textarea id="fb-message" class="feedback-textarea" placeholder="Write your feedback or requests..." required></textarea>
+        <textarea id="fb-message" class="feedback-textarea" placeholder="Write your feedback or requested subjects..." required></textarea>
         <div style="text-align: right;">
           <button type="submit" class="submit-btn">Send via Email</button>
         </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- FLOATING AI CHATBOT WIDGET -->
-  <div id="ai-chat-widget">
-    <button id="ai-chat-btn" onclick="toggleAiChat()" aria-label="Open AI Assistant">
-      🤖 <span>Gemini AI Tutor</span>
-    </button>
-
-    <div id="ai-chat-box" class="glass-panel hidden">
-      <div class="chat-header">
-        <div class="chat-title">
-          <strong>🤖 Toppers AI Study Partner</strong>
-          <small>Powered by Gemini AI</small>
-        </div>
-        <button class="close-btn" style="top: 0.6rem; right: 0.6rem;" onclick="toggleAiChat()">✕</button>
-      </div>
-
-      <div id="chat-messages" class="chat-messages">
-        <div class="bot-msg">
-          👋 <strong>Hello Engineer!</strong> I am connected directly to Gemini AI. Ask any CSE doubt (e.g. <em>Explain Virtual Memory in OS</em> or <em>Dijkstra Algorithm working</em>).
-        </div>
-      </div>
-
-      <form id="chat-form" onsubmit="handleAiChatSubmit(event)">
-        <input type="text" id="chat-input" placeholder="Ask a doubt or topic..." required autocomplete="off" />
-        <button type="submit" id="chat-send-btn">Send 🚀</button>
       </form>
     </div>
   </div>
@@ -789,46 +588,45 @@
       setInterval(updateQuote, 5000);
     });
 
-    // Subject Configuration with PDF View Links
-    // Put your Google Drive or PDF links in the "viewUrl" field
+    // Subject Configuration
     const subjectsConfig = {
       1: [
-        { name: "Mathematics 1", id: "maths1", aliases: ["m1", "maths 1", "math 1"], viewUrl: "#" },
-        { name: "Quantum Mechanics For Engineers", id: "quantum", aliases: ["physics", "qm"], viewUrl: "#" },
-        { name: "Programming For Problem Solving In C", id: "c", aliases: ["c prog", "c programming", "pps"], viewUrl: "#" }
+        { name: "Mathematics 1", id: "maths1", aliases: ["m1", "maths 1", "math 1"], units: [1, 2, 3, 4] },
+        { name: "Quantum Mechanics For Engineers", id: "quantum", aliases: ["physics", "qm"], units: [1, 2, 3, 4] },
+        { name: "Programming For Problem Solving In C", id: "c", aliases: ["c prog", "c programming", "pps"], units: [1, 2, 3, 4] }
       ],
       2: [
-        { name: "Mathematics 2", id: "maths2", aliases: ["m2", "maths 2", "math 2"], viewUrl: "#" },
-        { name: "Engineering Chemistry", id: "chem", aliases: ["chemistry"], viewUrl: "#" },
-        { name: "Basics Of Analog And Digital Electronics", id: "ade", aliases: ["analog", "digital", "ade"], viewUrl: "#" },
-        { name: "Fundamentals Of Electrical Engineering", id: "fee", aliases: ["electrical", "fee"], viewUrl: "#" },
-        { name: "Discrete Structures", id: "discrete", aliases: ["dms", "discrete maths"], viewUrl: "#" }
+        { name: "Mathematics 2", id: "maths2", aliases: ["m2", "maths 2", "math 2"], units: [1, 2, 3, 4] },
+        { name: "Engineering Chemistry", id: "chem", aliases: ["chemistry"], units: [2, 3, 4] },
+        { name: "Basics Of Analog And Digital Electronics", id: "ade", aliases: ["analog", "digital", "ade"], units: [1, 2, 3, 4] },
+        { name: "Fundamentals Of Electrical Engineering", id: "fee", aliases: ["electrical", "fee"], units: [1, 2, 3] },
+        { name: "Discrete Structures", id: "discrete", aliases: ["dms", "discrete maths"], units: [1, 2, 3] }
       ],
       3: [
-        { name: "Database Management System (DBMS)", id: "dbms", aliases: ["dbms", "sql", "database"], viewUrl: "#" },
-        { name: "Data Structures (DS)", id: "ds", aliases: ["dsa", "data structure"], viewUrl: "#" },
-        { name: "Computer Organization & Architecture (COA)", id: "coa", aliases: ["coa", "architecture"], viewUrl: "#" },
-        { name: "Digital System Design (DSD)", id: "dsd", aliases: ["dsd", "logic design"], viewUrl: "#" },
-        { name: "Object Oriented Programming Using Java", id: "java", aliases: ["oops", "java", "oop"], viewUrl: "#" }
+        { name: "Database Management System (DBMS)", id: "dbms", aliases: ["dbms", "sql", "database"], units: [1, 2, 3, 4] },
+        { name: "Data Structures (DS)", id: "ds", aliases: ["dsa", "data structure"], units: [1, 2, 3, 4] },
+        { name: "Computer Organization & Architecture (COA)", id: "coa", aliases: ["coa", "architecture"], units: [1, 2, 3, 4] },
+        { name: "Digital System Design (DSD)", id: "dsd", aliases: ["dsd", "logic design"], units: [1, 2, 3, 4] },
+        { name: "Object Oriented Programming Using Java", id: "java", aliases: ["oops", "java", "oop"], units: [1, 2, 3, 4] }
       ],
       4: [
-        { name: "Mathematics 3", id: "maths3", aliases: ["m3", "maths 3", "math 3"], viewUrl: "#" },
-        { name: "Operating Systems", id: "os", aliases: ["os", "operating system"], viewUrl: "#" },
-        { name: "Design And Analysis Of Algorithms", id: "daa", aliases: ["daa", "algo", "algorithms"], viewUrl: "#" },
-        { name: "Software Engineering", id: "se", aliases: ["se", "software eng"], viewUrl: "#" },
-        { name: "Full Stack Development", id: "fsd", aliases: ["fsd", "web dev", "web"], viewUrl: "#" }
+        { name: "Mathematics 3", id: "maths3", aliases: ["m3", "maths 3", "math 3"], units: [1, 2, 3, 4] },
+        { name: "Operating Systems", id: "os", aliases: ["os", "operating system"], units: [1, 2, 3, 4] },
+        { name: "Design And Analysis Of Algorithms", id: "daa", aliases: ["daa", "algo", "algorithms"], units: [1, 2, 3, 4] },
+        { name: "Software Engineering", id: "se", aliases: ["se", "software eng"], units: [1, 2, 3, 4] },
+        { name: "Full Stack Development", id: "fsd", aliases: ["fsd", "web dev", "web"], units: [1, 2, 3, 4] }
       ],
       5: [
-        { name: "Embedded Systems", id: "embedded", aliases: ["embedded", "es"], viewUrl: "#" },
-        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", aliases: ["flat", "toc", "automata"], viewUrl: "#" },
-        { name: "Introduction to Cyber Security", id: "cybersecurity", aliases: ["cyber", "security"], viewUrl: "#" },
-        { name: "Computer Networks", id: "networks", aliases: ["cn", "networks", "networking"], viewUrl: "#" },
-        { name: "Python Programming", id: "python", aliases: ["python", "py"], viewUrl: "#" }
+        { name: "Embedded Systems", id: "embedded", aliases: ["embedded", "es"], units: [1, 2, 3, 4] },
+        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", aliases: ["flat", "toc", "automata"], units: [1, 2, 3, 4] },
+        { name: "Introduction to Cyber Security", id: "cybersecurity", aliases: ["cyber", "security"], units: [1, 2, 3, 4] },
+        { name: "Computer Networks", id: "networks", aliases: ["cn", "networks", "networking"], units: [1, 2, 3, 4] },
+        { name: "Python Programming", id: "python", aliases: ["python", "py"], units: [1, 2, 3, 4] }
       ],
       6: [
-        { name: "Compiler Design", id: "compiler", aliases: ["cd", "compiler"], viewUrl: "#" },
-        { name: "Artificial Intelligence", id: "ai", aliases: ["ai", "intel"], viewUrl: "#" },
-        { name: "Software Testing", id: "testing", aliases: ["st", "testing", "stqa"], viewUrl: "#" }
+        { name: "Compiler Design", id: "compiler", aliases: ["cd", "compiler"], units: [1, 2, 3, 4] },
+        { name: "Artificial Intelligence", id: "ai", aliases: ["ai", "intel"], units: [1, 2, 3, 4] },
+        { name: "Software Testing", id: "testing", aliases: ["st", "testing", "stqa"], units: [1, 2, 3, 4] }
       ]
     };
 
@@ -837,6 +635,28 @@
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         callback();
+      }
+    }
+
+    // PDF Link Verification with Fallback
+    async function handlePdfOpen(event, pdfPath, subjectName, unitNum) {
+      event.preventDefault();
+      try {
+        const response = await fetch(pdfPath, { method: 'HEAD' });
+        if (response.ok) {
+          window.open(pdfPath, '_blank');
+        } else {
+          promptMissingPdf(subjectName, unitNum);
+        }
+      } catch (e) {
+        window.open(pdfPath, '_blank');
+      }
+    }
+
+    function promptMissingPdf(subj, unit) {
+      if (confirm(`Unit ${unit} for "${subj}" is currently being prepared by our toppers.\n\nWould you like to request this note right now?`)) {
+        openFeedbackModal();
+        document.getElementById('fb-message').value = `Please upload notes for ${subj} - Unit ${unit}.`;
       }
     }
 
@@ -851,7 +671,7 @@
       document.getElementById('modal-search-input').value = '';
       document.getElementById('modal-search-results').innerHTML = `
         <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
-          Start typing above to search for subjects.
+          Start typing above to discover subjects & download units directly.
         </div>
       `;
     }
@@ -863,7 +683,7 @@
       if (!query) {
         resultsContainer.innerHTML = `
           <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
-            Start typing above to search for subjects.
+            Start typing above to discover subjects & download units directly.
           </div>
         `;
         return;
@@ -883,18 +703,21 @@
             const card = document.createElement('div');
             card.className = 'result-card';
 
-            const actionBtn = (subj.viewUrl && subj.viewUrl !== "#")
-              ? `<a href="${subj.viewUrl}" target="_blank" class="view-btn">👁️ View Notes</a>`
-              : `<span class="disabled-view-btn">⏳ Notes Updating Soon</span>`;
+            const unitsHtml = subj.units.map(u => {
+              const file = `./sem${sem}_${subj.id}_unit${u}.pdf`;
+              return `
+                <a href="${file}" onclick="handlePdfOpen(event, '${file}', '${subj.name.replace(/'/g, "\\'")}', ${u})" class="unit-btn">
+                  Unit ${u} 📄
+                </a>
+              `;
+            }).join(' ');
 
             card.innerHTML = `
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <strong style="font-size: 0.95rem; color: #fff;">${subj.name}</strong>
                 <span class="badge" style="margin-bottom:0;">Sem ${sem}</span>
               </div>
-              <div style="margin-top: 0.5rem;">
-                ${actionBtn}
-              </div>
+              <div style="margin-top: 0.5rem;">${unitsHtml}</div>
             `;
             resultsContainer.appendChild(card);
           }
@@ -917,8 +740,8 @@
       document.getElementById('modal-sem-badge').innerText = `Semester 0${semNum}`;
 
       if (!subjectsConfig[semNum]) {
-        document.getElementById('modal-sem-title').innerText = "Semester Modules";
-        container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem 0;">Modules coming soon for Semester 0${semNum}!</p>`;
+        document.getElementById('modal-sem-title').innerText = "Semester Under Construction";
+        container.innerHTML = `<p style="text-align: center; color: #94a3b8; padding: 2rem 0;">Notes coming soon for Semester 0${semNum}!</p>`;
       } else {
         document.getElementById('modal-sem-title').innerText = `Semester ${semNum} Subjects`;
 
@@ -926,15 +749,18 @@
           const card = document.createElement('div');
           card.className = 'result-card';
 
-          const actionBtn = (subj.viewUrl && subj.viewUrl !== "#")
-            ? `<a href="${subj.viewUrl}" target="_blank" class="view-btn">👁️ View Notes</a>`
-            : `<span class="disabled-view-btn">⏳ Notes Updating Soon</span>`;
+          let unitsButtons = subj.units.map(uNum => {
+            const fileName = `./sem${semNum}_${subj.id}_unit${uNum}.pdf`;
+            return `
+              <a href="${fileName}" onclick="handlePdfOpen(event, '${fileName}', '${subj.name.replace(/'/g, "\\'")}', ${uNum})" class="unit-btn">
+                Open Unit ${uNum} 📄
+              </a>
+            `;
+          }).join('');
 
           card.innerHTML = `
             <h4 style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">📖 ${subj.name}</h4>
-            <div>
-              ${actionBtn}
-            </div>
+            <div>${unitsButtons}</div>
           `;
           container.appendChild(card);
         });
@@ -962,99 +788,6 @@
       const mailtoUrl = `mailto:luvmalik8684@gmail.com?subject=ToppersHub Feedback from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}`;
       window.location.href = mailtoUrl;
       closeFeedbackModal();
-    }
-
-    /* --- REAL GEMINI AI CHATBOT FUNCTIONALITY --- */
-    function toggleAiChat() {
-      const box = document.getElementById('ai-chat-box');
-      box.classList.toggle('hidden');
-      if (!box.classList.contains('hidden')) {
-        document.getElementById('chat-input').focus();
-      }
-    }
-
-    async function handleAiChatSubmit(e) {
-      e.preventDefault();
-      const input = document.getElementById('chat-input');
-      const messagesContainer = document.getElementById('chat-messages');
-      const userText = input.value.trim();
-
-      if (!userText) return;
-
-      // 1. User Message Display
-      appendMessage(userText, 'user-msg');
-      input.value = '';
-
-      // Loading Indicator
-      const loadingDiv = appendMessage('Gemini AI thinking...', 'bot-msg');
-
-      try {
-        // CONFIGURED GEMINI API KEY
-        const GEMINI_API_KEY = "AQ.Ab8RN6K9oJzSRR4DMkdYfBpguAe_YQCiptlADUq0fU-H2sEWaw"; 
-
-        // Call Gemini 1.5 Flash API
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [{ 
-                text: `You are Toppers Hub CSE AI Tutor. User prompt: "${userText}".
-CRITICAL INSTRUCTIONS:
-1. Detect user prompt language. Respond in the EXACT SAME language (English / Hinglish / Hindi).
-2. Give a detailed, accurate engineering explanation with clear bullet points and bold headings.
-3. Keep it well-structured for university exam prep.` 
-              }]
-            }]
-          })
-        });
-
-        const data = await response.json();
-
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
-          const aiText = data.candidates[0].content.parts[0].text;
-          loadingDiv.innerHTML = formatMarkdown(aiText);
-
-          // Add Top Viewed YouTube Search Link at the bottom
-          const ytQuery = encodeURIComponent(`${userText} CSE engineering lecture`);
-          const ytSearchUrl = `https://www.youtube.com/results?search_query=${ytQuery}&sp=CAM%253D`; // Sorted by view count
-
-          const ytCardHtml = `
-            <div class="yt-card">
-              📺 <strong>Top Video Lecture:</strong><br/>
-              <a href="${ytSearchUrl}" target="_blank" rel="noopener noreferrer">
-                Watch Top Viewed Videos for "${userText}" on YouTube ↗
-              </a>
-            </div>
-          `;
-          loadingDiv.innerHTML += ytCardHtml;
-        } else {
-          loadingDiv.innerText = "server response invalid.";
-        }
-
-      } catch (err) {
-        console.error(err);
-        loadingDiv.innerText = "Error connecting to Gemini AI.";
-      }
-
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function appendMessage(text, className) {
-      const messagesContainer = document.getElementById('chat-messages');
-      const msgDiv = document.createElement('div');
-      msgDiv.className = className;
-      msgDiv.innerText = text;
-      messagesContainer.appendChild(msgDiv);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      return msgDiv;
-    }
-
-    function formatMarkdown(text) {
-      return text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/•/g, '<br/>•')
-        .replace(/\n/g, '<br/>');
     }
   </script>
 </body>
