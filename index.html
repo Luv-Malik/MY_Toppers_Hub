@@ -1,4 +1,557 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toppers Notes Hub - CSE Engineering</title>
+
+  <!-- SEO & Social Preview Tags -->
+  <meta name="description" content="Handcrafted toppers notes, unit-wise PDFs, and exam prep resources for CSE Engineering students." />
+  <meta name="keywords" content="Toppers Notes, CSE Notes, Engineering Notes, Computer Science, BTech Notes, Maths, DBMS, OS, AI" />
+  <meta name="author" content="Luv Malik" />
+
+  <!-- Open Graph / Social Media Sharing -->
+  <meta property="og:title" content="Toppers Notes Hub - CSE Engineering" />
+  <meta property="og:description" content="Clear mid-terms and end-sem exams effortlessly with unit-wise toppers notes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://luv-malik.github.io/MY_Toppers_Hub/" />
+  <meta property="og:image" content="https://luv-malik.github.io/MY_Toppers_Hub/preview.png" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #05070a;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Sparkles Effect */
+    .bg-sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, rgba(6, 182, 212, 0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.6), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, rgba(6, 182, 212, 0.9), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 230px 190px, rgba(255, 255, 255, 0.7), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 300px 80px, rgba(6, 182, 212, 0.7), rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 350px 350px;
+      opacity: 0.6;
+      animation: sparkleAnimation 20s linear infinite;
+    }
+
+    @keyframes sparkleAnimation {
+      0% { background-position: 0 0; }
+      100% { background-position: 350px 700px; }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      width: 100%;
+      outline: none;
+    }
+
+    .glass-card:hover, .glass-card:focus-visible {
+      border-color: rgba(6, 182, 212, 0.7);
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 1rem;
+      z-index: 40;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .cyan-text { color: #06b6d4; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-link {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #67e8f9;
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn-link:hover, .btn-link:focus-visible {
+      border-color: #06b6d4;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Hero & Quotes */
+    .hero {
+      text-align: center;
+      padding: 1.5rem 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #67e8f9;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .quote-box {
+      margin: 0 auto 1.5rem;
+      padding: 0.8rem 1.2rem;
+      max-width: 650px;
+      border-left: 3px solid #06b6d4;
+      background: rgba(6, 182, 212, 0.05);
+      border-radius: 0 1rem 1rem 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    .quote-text {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #cbd5e1;
+    }
+
+    .quote-author {
+      font-size: 0.75rem;
+      color: #06b6d4;
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .search-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+      outline: none;
+    }
+
+    .search-trigger:hover, .search-trigger:focus-visible {
+      border-color: #06b6d4;
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+    }
+
+    .search-placeholder {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .kbd-tag {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #67e8f9;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .sem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .sem-num {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #06b6d4;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .sem-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .sem-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .explore-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: #06b6d4;
+      font-weight: 600;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(5, 7, 10, 0.92);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    .hidden { display: none !important; }
+
+    .modal-box {
+      width: 100%;
+      max-width: 650px;
+      padding: 1.5rem;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #94a3b8;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .close-btn:hover { color: #fff; background: rgba(255,255,255,0.2); }
+
+    .modal-input, .feedback-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      margin: 0.75rem 0;
+    }
+
+    .feedback-textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: #06b6d4;
+      color: #000;
+      font-weight: 700;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #22d3ee;
+    }
+
+    .results-container {
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+
+    .result-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .unit-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #67e8f9;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .unit-btn:hover, .unit-btn:focus-visible {
+      background: #06b6d4;
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .kbd-tag { display: none; }
+      .nav-links { gap: 0.25rem; }
+      .btn-link { padding: 0.35rem 0.6rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sparkles Layer -->
+  <div class="bg-sparkles"></div>
+
+  <div class="container">
+    <header>
+      <div class="glass-panel header-inner">
+        <a href="#" class="logo">
+          <div class="logo-icon">🎓</div>
+          <span>TOPPERS<span class="cyan-text">HUB</span></span>
+        </a>
+        <div class="nav-links">
+          <button onclick="openFeedbackModal()" class="btn-link" aria-label="Open Feedback Form">💬 Feedback</button>
+          <a href="mailto:luvmalik8684@gmail.com?subject=Inquiry%20regarding%20Toppers%20Hub%20Notes" class="btn-link">✉️ Contact</a>
+          <a href="https://www.linkedin.com/in/luv-malik-188018383" target="_blank" class="btn-link">🔗 LinkedIn</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="badge">✨ Exam Season Survival Portal</div>
+      
+      <!-- Dynamic Motivational Quote Box -->
+      <div class="quote-box" id="quote-box">
+        <div class="quote-text" id="quote-display">"Push yourself, because no one else is going to do it for you."</div>
+        <div class="quote-author" id="quote-author">- Daily Motivation</div>
+      </div>
+
+      <h1>Tensed About Coming Exams? <br><span class="cyan-text">Let's Study With Toppers Notes!</span></h1>
+      <p>Handcrafted notes directly uploaded by toppers to help you clear mid-terms and end-sem exams effortlessly.</p>
+
+      <div class="glass-panel search-trigger" tabindex="0" role="button" aria-label="Search Subjects" onclick="openSearchModal()" onkeydown="handleKeyPress(event, openSearchModal)">
+        <div class="search-placeholder">
+          <span>🔍</span>
+          <span>Search subject or code (e.g. Maths, M1, FLAT, OS, AI, Compiler)...</span>
+        </div>
+        <span class="kbd-tag">Click / Press Enter</span>
+      </div>
+    </section>
+
+    <section class="sem-grid">
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 1 Notes" onclick="openSemModal(1)" onkeydown="handleKeyPress(event, () => openSemModal(1))">
+        <div class="sem-num">01</div>
+        <div class="sem-title">1st Semester</div>
+        <div class="sem-desc">3 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 2 Notes" onclick="openSemModal(2)" onkeydown="handleKeyPress(event, () => openSemModal(2))">
+        <div class="sem-num">02</div>
+        <div class="sem-title">2nd Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 3 Notes" onclick="openSemModal(3)" onkeydown="handleKeyPress(event, () => openSemModal(3))">
+        <div class="sem-num">03</div>
+        <div class="sem-title">3rd Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 4 Notes" onclick="openSemModal(4)" onkeydown="handleKeyPress(event, () => openSemModal(4))">
+        <div class="sem-num">04</div>
+        <div class="sem-title">4th Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 5 Notes" onclick="openSemModal(5)" onkeydown="handleKeyPress(event, () => openSemModal(5))">
+        <div class="sem-num">05</div>
+        <div class="sem-title">5th Semester</div>
+        <div class="sem-desc">5 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 6 Notes" onclick="openSemModal(6)" onkeydown="handleKeyPress(event, () => openSemModal(6))">
+        <div class="sem-num">06</div>
+        <div class="sem-title">6th Semester</div>
+        <div class="sem-desc">3 Core Subjects</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 7 Notes" onclick="openSemModal(7)" onkeydown="handleKeyPress(event, () => openSemModal(7))">
+        <div class="sem-num">07</div>
+        <div class="sem-title">7th Semester</div>
+        <div class="sem-desc">ML & Cloud</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+
+      <div class="glass-card" tabindex="0" role="button" aria-label="Semester 8 Notes" onclick="openSemModal(8)" onkeydown="handleKeyPress(event, () => openSemModal(8))">
+        <div class="sem-num">08</div>
+        <div class="sem-title">8th Semester</div>
+        <div class="sem-desc">Projects & Cyber</div>
+        <div class="explore-link">Explore Notes &rarr;</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SEARCH MODAL POPUP -->
+  <div id="search-modal" class="modal-overlay hidden">
+    <div class="glass-panel modal-box">
+      <button class="close-btn" onclick="closeSearchModal()" aria-label="Close modal">✕</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700;">🔍 Search Notes Hub</h3>
+      <input type="text" id="modal-search-input" class="modal-input" placeholder="Type subject or alias (e.g., M1, OS, FLAT, AI)..." oninput="handleModalSearch()">
+      
+      <div id="modal-search-results" class="results-container">
+        <div style="text-align: center; color: #94a3b8; font-size: 0.8rem; padding: 2rem 0;">
+          Start typing above to discover subjects & download units directly.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMESTER MODAL POPUP -->
+  <div id="sem-modal" class="modal-overlay hidden">
+    <div class="glass-panel modal-box">
+      <button class="close-btn" onclick="closeSemModal()" aria-label="Close modal">✕</button>
+      <div style="margin-bottom: 1rem;">
+        <span id="modal-sem-badge" class="badge">Semester</span>
+        <h2 id="modal-sem-title" style="font-size: 1.5rem; font-weight: 700;">Subjects</h2>
+      </div>
+      <div id="modal-content-container" class="results-container"></div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK MODAL POPUP -->
+  <div id="feedback-modal" class="modal-overlay hidden">
+    <div class="glass-panel modal-box">
+      <button class="close-btn" onclick="closeFeedbackModal()" aria-label="Close modal">✕</button>
+      <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">💬 Send Feedback & Request Notes</h3>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Have any suggestion or missing notes? Let us know!</p>
+      
+      <form onsubmit="handleFeedbackSubmit(event)">
+        <input type="text" id="fb-name" class="modal-input" placeholder="Your Name" required />
+        <textarea id="fb-message" class="feedback-textarea" placeholder="Write your feedback or requested subjects..." required></textarea>
+        <div style="text-align: right;">
+          <button type="submit" class="submit-btn">Send via Email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
     // Motivational Quotes Array
     const quotes = [
       { text: "It always seems impossible until it's done.", author: "- Nelson Mandela" },
@@ -29,32 +582,53 @@
       }, 400);
     }
 
-    // Dynamic Subjects Configuration Variable (Fetched from JSON/API)
-    let subjectsConfig = {};
-
-    // Dynamic Fetch Function
-    async function loadSubjectsFromApi() {
-      try {
-        // Path to JSON or API URL
-        const response = await fetch('./notes.json');
-        if (!response.ok) throw new Error('Failed to load JSON data');
-        
-        subjectsConfig = await response.json();
-        console.log('Toppers Hub Data Loaded Successfully!');
-      } catch (error) {
-        console.error('API Load Error:', error);
-      }
-    }
-
     window.addEventListener('DOMContentLoaded', () => {
-      // Quotes Initialization
       document.getElementById('quote-display').innerText = `"${quotes[0].text}"`;
       document.getElementById('quote-author').innerText = quotes[0].author;
       setInterval(updateQuote, 5000);
-
-      // Fetch Subjects JSON Data
-      loadSubjectsFromApi();
     });
+
+    // Subject Configuration
+    const subjectsConfig = {
+      1: [
+        { name: "Mathematics 1", id: "maths1", aliases: ["m1", "maths 1", "math 1"], units: [1, 2, 3, 4] },
+        { name: "Quantum Mechanics For Engineers", id: "quantum", aliases: ["physics", "qm"], units: [1, 2, 3, 4] },
+        { name: "Programming For Problem Solving In C", id: "c", aliases: ["c prog", "c programming", "pps"], units: [1, 2, 3, 4] }
+      ],
+      2: [
+        { name: "Mathematics 2", id: "maths2", aliases: ["m2", "maths 2", "math 2"], units: [1, 2, 3, 4] },
+        { name: "Engineering Chemistry", id: "chem", aliases: ["chemistry"], units: [2, 3, 4] },
+        { name: "Basics Of Analog And Digital Electronics", id: "ade", aliases: ["analog", "digital", "ade"], units: [1, 2, 3, 4] },
+        { name: "Fundamentals Of Electrical Engineering", id: "fee", aliases: ["electrical", "fee"], units: [1, 2, 3] },
+        { name: "Discrete Structures", id: "discrete", aliases: ["dms", "discrete maths"], units: [1, 2, 3] }
+      ],
+      3: [
+        { name: "Database Management System (DBMS)", id: "dbms", aliases: ["dbms", "sql", "database"], units: [1, 2, 3, 4] },
+        { name: "Data Structures (DS)", id: "ds", aliases: ["dsa", "data structure"], units: [1, 2, 3, 4] },
+        { name: "Computer Organization & Architecture (COA)", id: "coa", aliases: ["coa", "architecture"], units: [1, 2, 3, 4] },
+        { name: "Digital System Design (DSD)", id: "dsd", aliases: ["dsd", "logic design"], units: [1, 2, 3, 4] },
+        { name: "Object Oriented Programming Using Java", id: "java", aliases: ["oops", "java", "oop"], units: [1, 2, 3, 4] }
+      ],
+      4: [
+        { name: "Mathematics 3", id: "maths3", aliases: ["m3", "maths 3", "math 3"], units: [1, 2, 3, 4] },
+        { name: "Operating Systems", id: "os", aliases: ["os", "operating system"], units: [1, 2, 3, 4] },
+        { name: "Design And Analysis Of Algorithms", id: "daa", aliases: ["daa", "algo", "algorithms"], units: [1, 2, 3, 4] },
+        { name: "Software Engineering", id: "se", aliases: ["se", "software eng"], units: [1, 2, 3, 4] },
+        { name: "Full Stack Development", id: "fsd", aliases: ["fsd", "web dev", "web"], units: [1, 2, 3, 4] }
+      ],
+      5: [
+        { name: "Embedded Systems", id: "embedded", aliases: ["embedded", "es"], units: [1, 2, 3, 4] },
+        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", aliases: ["flat", "toc", "automata"], units: [1, 2, 3, 4] },
+        { name: "Introduction to Cyber Security", id: "cybersecurity", aliases: ["cyber", "security"], units: [1, 2, 3, 4] },
+        { name: "Computer Networks", id: "networks", aliases: ["cn", "networks", "networking"], units: [1, 2, 3, 4] },
+        { name: "Python Programming", id: "python", aliases: ["python", "py"], units: [1, 2, 3, 4] }
+      ],
+      6: [
+        { name: "Compiler Design", id: "compiler", aliases: ["cd", "compiler"], units: [1, 2, 3, 4] },
+        { name: "Artificial Intelligence", id: "ai", aliases: ["ai", "intel"], units: [1, 2, 3, 4] },
+        { name: "Software Testing", id: "testing", aliases: ["st", "testing", "stqa"], units: [1, 2, 3, 4] }
+      ]
+    };
 
     // Keyboard Accessibility Handler
     function handleKeyPress(e, callback) {
@@ -216,3 +790,5 @@
       closeFeedbackModal();
     }
   </script>
+</body>
+</html>
