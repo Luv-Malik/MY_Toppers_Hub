@@ -1,40 +1,56 @@
-{
-  "1": [
-    { "name": "Mathematics 1", "id": "maths1", "aliases": ["m1", "maths 1", "math 1"], "units": [1, 2, 3, 4] },
-    { "name": "Quantum Mechanics For Engineers", "id": "quantum", "aliases": ["physics", "qm"], "units": [1, 2, 3, 4] },
-    { "name": "Programming For Problem Solving In C", "id": "c", "aliases": ["c prog", "c programming", "pps"], "units": [1, 2, 3, 4] }
-  ],
-  "2": [
-    { "name": "Mathematics 2", "id": "maths2", "aliases": ["m2", "maths 2", "math 2"], "units": [1, 2, 3, 4] },
-    { "name": "Engineering Chemistry", "id": "chem", "aliases": ["chemistry"], "units": [2, 3, 4] },
-    { "name": "Basics Of Analog And Digital Electronics", "id": "ade", "aliases": ["analog", "digital", "ade"], "units": [1, 2, 3, 4] },
-    { "name": "Fundamentals Of Electrical Engineering", "id": "fee", "aliases": ["electrical", "fee"], "units": [1, 2, 3] },
-    { "name": "Discrete Structures", "id": "discrete", "aliases": ["dms", "discrete maths"], "units": [1, 2, 3] }
-  ],
-  "3": [
-    { "name": "Database Management System (DBMS)", "id": "dbms", "aliases": ["dbms", "sql", "database"], "units": [1, 2, 3, 4] },
-    { "name": "Data Structures (DS)", "id": "ds", "aliases": ["dsa", "data structure"], "units": [1, 2, 3, 4] },
-    { "name": "Computer Organization & Architecture (COA)", "id": "coa", "aliases": ["coa", "architecture"], "units": [1, 2, 3, 4] },
-    { "name": "Digital System Design (DSD)", "id": "dsd", "aliases": ["dsd", "logic design"], "units": [1, 2, 3, 4] },
-    { "name": "Object Oriented Programming Using Java", "id": "java", "aliases": ["oops", "java", "oop"], "units": [1, 2, 3, 4] }
-  ],
-  "4": [
-    { "name": "Mathematics 3", "id": "maths3", "aliases": ["m3", "maths 3", "math 3"], "units": [1, 2, 3, 4] },
-    { "name": "Operating Systems", "id": "os", "aliases": ["os", "operating system"], "units": [1, 2, 3, 4] },
-    { "name": "Design And Analysis Of Algorithms", "id": "daa", "aliases": ["daa", "algo", "algorithms"], "units": [1, 2, 3, 4] },
-    { "name": "Software Engineering", "id": "se", "aliases": ["se", "software eng"], "units": [1, 2, 3, 4] },
-    { "name": "Full Stack Development", "id": "fsd", "aliases": ["fsd", "web dev", "web"], "units": [1, 2, 3, 4] }
-  ],
-  "5": [
-    { "name": "Embedded Systems", "id": "embedded", "aliases": ["embedded", "es"], "units": [1, 2, 3, 4] },
-    { "name": "Formal Languages and Automata Theory (FLAT)", "id": "flat", "aliases": ["flat", "toc", "automata"], "units": [1, 2, 3, 4] },
-    { "name": "Introduction to Cyber Security", "id": "cybersecurity", "aliases": ["cyber", "security"], "units": [1, 2, 3, 4] },
-    { "name": "Computer Networks", "id": "networks", "aliases": ["cn", "networks", "networking"], "units": [1, 2, 3, 4] },
-    { "name": "Python Programming", "id": "python", "aliases": ["python", "py"], "units": [1, 2, 3, 4] }
-  ],
-  "6": [
-    { "name": "Compiler Design", "id": "compiler", "aliases": ["cd", "compiler"], "units": [1, 2, 3, 4] },
-    { "name": "Artificial Intelligence", "id": "ai", "aliases": ["ai", "intel"], "units": [1, 2, 3, 4] },
-    { "name": "Software Testing", "id": "testing", "aliases": ["st", "testing", "stqa"], "units": [1, 2, 3, 4] }
-  ]
-}
+// Dynamic Subjects Configuration Variable
+    let subjectsConfig = {};
+
+    // Standard Fallback Data (In case JSON fails to load)
+    const fallbackSubjectsConfig = {
+      1: [
+        { name: "Mathematics 1", id: "maths1", aliases: ["m1", "maths 1", "math 1"], units: [1, 2, 3, 4] },
+        { name: "Quantum Mechanics For Engineers", id: "quantum", aliases: ["physics", "qm"], units: [1, 2, 3, 4] },
+        { name: "Programming For Problem Solving In C", id: "c", aliases: ["c prog", "c programming", "pps"], units: [1, 2, 3, 4] }
+      ],
+      2: [
+        { name: "Mathematics 2", id: "maths2", aliases: ["m2", "maths 2", "math 2"], units: [1, 2, 3, 4] },
+        { name: "Engineering Chemistry", id: "chem", aliases: ["chemistry"], units: [2, 3, 4] },
+        { name: "Basics Of Analog And Digital Electronics", id: "ade", aliases: ["analog", "digital", "ade"], units: [1, 2, 3, 4] },
+        { name: "Fundamentals Of Electrical Engineering", id: "fee", aliases: ["electrical", "fee"], units: [1, 2, 3] },
+        { name: "Discrete Structures", id: "discrete", aliases: ["dms", "discrete maths"], units: [1, 2, 3] }
+      ],
+      3: [
+        { name: "Database Management System (DBMS)", id: "dbms", aliases: ["dbms", "sql", "database"], units: [1, 2, 3, 4] },
+        { name: "Data Structures (DS)", id: "ds", aliases: ["dsa", "data structure"], units: [1, 2, 3, 4] },
+        { name: "Computer Organization & Architecture (COA)", id: "coa", aliases: ["coa", "architecture"], units: [1, 2, 3, 4] },
+        { name: "Digital System Design (DSD)", id: "dsd", aliases: ["dsd", "logic design"], units: [1, 2, 3, 4] },
+        { name: "Object Oriented Programming Using Java", id: "java", aliases: ["oops", "java", "oop"], units: [1, 2, 3, 4] }
+      ],
+      4: [
+        { name: "Mathematics 3", id: "maths3", aliases: ["m3", "maths 3", "math 3"], units: [1, 2, 3, 4] },
+        { name: "Operating Systems", id: "os", aliases: ["os", "operating system"], units: [1, 2, 3, 4] },
+        { name: "Design And Analysis Of Algorithms", id: "daa", aliases: ["daa", "algo", "algorithms"], units: [1, 2, 3, 4] },
+        { name: "Software Engineering", id: "se", aliases: ["se", "software eng"], units: [1, 2, 3, 4] },
+        { name: "Full Stack Development", id: "fsd", aliases: ["fsd", "web dev", "web"], units: [1, 2, 3, 4] }
+      ],
+      5: [
+        { name: "Embedded Systems", id: "embedded", aliases: ["embedded", "es"], units: [1, 2, 3, 4] },
+        { name: "Formal Languages and Automata Theory (FLAT)", id: "flat", aliases: ["flat", "toc", "automata"], units: [1, 2, 3, 4] },
+        { name: "Introduction to Cyber Security", id: "cybersecurity", aliases: ["cyber", "security"], units: [1, 2, 3, 4] },
+        { name: "Computer Networks", id: "networks", aliases: ["cn", "networks", "networking"], units: [1, 2, 3, 4] },
+        { name: "Python Programming", id: "python", aliases: ["python", "py"], units: [1, 2, 3, 4] }
+      ],
+      6: [
+        { name: "Compiler Design", id: "compiler", aliases: ["cd", "compiler"], units: [1, 2, 3, 4] },
+        { name: "Artificial Intelligence", id: "ai", aliases: ["ai", "intel"], units: [1, 2, 3, 4] },
+        { name: "Software Testing", id: "testing", aliases: ["st", "testing", "stqa"], units: [1, 2, 3, 4] }
+      ]
+    };
+
+    // Safe Fetch with Fallback
+    async function loadSubjectsFromApi() {
+      try {
+        const response = await fetch('./notes.json');
+        if (!response.ok) throw new Error('File not found');
+        subjectsConfig = await response.json();
+      } catch (error) {
+        console.warn('JSON file load nahi hui, fallback data ka use kar rahe hain.');
+        subjectsConfig = fallbackSubjectsConfig;
+      }
+    }
